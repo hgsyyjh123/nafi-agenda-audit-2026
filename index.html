@@ -3,54 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>연구 공정 및 내용 검증·승인 기술서 | 2026년 국회 미래세대 미래의제 공모전</title>
+<title>연구 공정 · 미승인 내역 분석 및 최종 결론 도출 기술서 | 2026년 국회 미래세대 미래의제 공모전</title>
 <style>
   :root {
     --navy:#162d4c; --blue:#1d4ed8; --slate:#334155; --muted:#64748b;
-    --bg:#f8fafc; --card:#ffffff; --line:#cbd5e1; --soft:#eff6ff; --ok:#047857; --ok-bg:#ecfdf5;
-    --rej:#b91c1c; --rej-bg:#fef2f2;
+    --bg:#f8fafc; --card:#ffffff; --line:#cbd5e1; --soft:#eff6ff;
+    --ok:#047857; --ok-bg:#ecfdf5; --rej:#b91c1c; --rej-bg:#fef2f2; --cond:#b45309; --cond-bg:#fffbeb;
   }
   * { box-sizing:border-box; }
   body { margin:0; font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:var(--bg); color:#0f172a; line-height:1.65; font-size:15px; }
   header { background:linear-gradient(135deg,#0f2342,#1e3a8a); color:#fff; padding:28px 24px; border-bottom:3px solid #93c5fd; }
-  .wrap { max-width:1160px; margin:0 auto; }
+  .wrap { max-width:1180px; margin:0 auto; }
   .top-row { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
-  .kicker { display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:0.3px; padding:4px 11px; border-radius:4px; background:rgba(255,255,255,0.14); color:#dbeafe; margin-bottom:8px; }
+  .kicker { display:inline-block; font-size:12.5px; font-weight:700; padding:4px 11px; border-radius:4px; background:rgba(255,255,255,0.14); color:#dbeafe; margin-bottom:8px; }
   h1 { margin:4px 0 8px; font-size:22px; line-height:1.4; font-weight:800; letter-spacing:-0.3px; }
   .sub { margin:0; font-size:14px; color:#cbd5e1; }
   .pdf-btn { display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--navy); text-decoration:none; font-weight:800; font-size:13.5px; padding:10px 16px; border-radius:6px; border:1px solid #bfdbfe; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,0.15); }
   .pdf-btn:hover { background:#eff6ff; }
   nav.tabs { background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20; }
   nav.tabs .wrap { display:flex; gap:4px; overflow-x:auto; padding:10px 16px; }
-  nav.tabs button { background:transparent; color:var(--slate); border:1px solid transparent; padding:9px 15px; border-radius:6px; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  nav.tabs button { background:transparent; color:var(--slate); border:1px solid transparent; padding:9px 14px; border-radius:6px; font-size:13.8px; font-weight:700; cursor:pointer; white-space:nowrap; }
   nav.tabs button:hover { background:#f1f5f9; }
   nav.tabs button.active { background:var(--navy); color:#fff; }
-  main { max-width:1160px; margin:0 auto; padding:24px 16px 64px; }
+  main { max-width:1180px; margin:0 auto; padding:24px 16px 64px; }
   .panel { display:none; } .panel.active { display:block; }
   .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:20px; }
   .kpi { background:var(--card); border:1px solid var(--line); border-top:3px solid var(--navy); border-radius:8px; padding:14px 16px; }
+  .kpi.warn { border-top-color:var(--rej); }
+  .kpi.good { border-top-color:var(--ok); }
   .kpi .lbl { font-size:12.5px; color:var(--muted); font-weight:600; }
   .kpi .val { font-size:20px; font-weight:800; color:var(--navy); margin-top:4px; }
+  .kpi.warn .val { color:var(--rej); }
+  .kpi.good .val { color:var(--ok); }
   .kpi .desc { font-size:12px; color:var(--slate); margin-top:2px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:22px; margin-bottom:18px; }
   h2 { margin:0 0 12px; font-size:18px; color:var(--navy); border-left:4px solid var(--blue); padding-left:10px; }
-  h3 { margin:16px 0 8px; font-size:15.5px; color:var(--navy); }
   p.lead { margin:0 0 14px; color:var(--slate); font-size:14.5px; }
   .table-wrap { overflow-x:auto; }
-  table { width:100%; border-collapse:collapse; font-size:13.8px; }
-  th, td { border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
+  table { width:100%; border-collapse:collapse; font-size:13.6px; }
+  th, td { border:1px solid var(--line); padding:9.5px 11px; text-align:left; vertical-align:top; }
   th { background:#f1f5f9; color:var(--navy); font-weight:700; }
-  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; font-weight:700; }
+  tr.row-rej td { background:#fffafa; }
+  tr.row-cond td { background:#fffdf5; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; font-weight:700; white-space:nowrap; }
   .tag.ok { background:var(--ok-bg); color:var(--ok); border:1px solid #a7f3d0; }
   .tag.rej { background:var(--rej-bg); color:var(--rej); border:1px solid #fecaca; }
+  .tag.cond { background:var(--cond-bg); color:var(--cond); border:1px solid #fde68a; }
   .tag.cat { background:var(--soft); color:var(--blue); border:1px solid #bfdbfe; }
-  .gate-list { display:grid; gap:12px; margin-top:14px; }
-  .gate-item { border:1px solid var(--line); border-left:4px solid var(--navy); border-radius:6px; padding:14px 16px; background:#fcfdff; }
-  .gate-item.rejected { border-left-color:var(--rej); background:#fffafa; }
-  .gate-head { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
-  .gate-title { font-weight:800; color:var(--navy); font-size:15px; }
+  .bar-wrap { width:100%; background:#e2e8f0; height:10px; border-radius:999px; overflow:hidden; margin-top:5px; }
+  .bar-fill { height:100%; border-radius:999px; }
+  .std-grid { display:grid; gap:12px; margin-top:12px; }
+  .std-box { border:1px solid var(--line); border-left:4px solid var(--navy); border-radius:6px; padding:14px 16px; background:#fcfdff; }
+  .std-box.final { border-left-color:var(--ok); background:#f4fdf9; }
+  .std-title { font-weight:800; color:var(--navy); font-size:15px; margin-bottom:5px; }
   .filter-bar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
-  .filter-bar button { background:#f1f5f9; border:1px solid var(--line); color:var(--slate); padding:7px 13px; border-radius:6px; font-size:13px; font-weight:700; cursor:pointer; }
+  .filter-bar button { background:#f1f5f9; border:1px solid var(--line); color:var(--slate); padding:7px 12px; border-radius:6px; font-size:13px; font-weight:700; cursor:pointer; }
   .filter-bar button.active { background:var(--blue); color:#fff; border-color:var(--blue); }
   .filter-bar input { flex:1; min-width:200px; padding:8px 12px; border:1px solid var(--line); border-radius:6px; font-size:13.5px; }
   footer { border-top:1px solid var(--line); background:#fff; color:var(--muted); font-size:12.5px; padding:18px 16px; text-align:center; }
@@ -60,88 +67,129 @@
 <header>
   <div class="wrap top-row">
     <div>
-      <span class="kicker">2026년 국회 미래세대 미래의제 공모전 · AI 활용 범위 및 내용 검증 기록서</span>
+      <span class="kicker">2026년 국회 미래세대 미래의제 공모전 · AI 활용 구간 및 미승인 배제·기준확립·최종결론 기술서</span>
       <h1>인구 비대칭 시대의 ‘입법 시간주권’: 국회 30년 코호트 세대회계 의무화와 가상 미래세대 숙의배심</h1>
-      <p class="sub">문헌·통계·조문·교열 도구 활용 구간 명세 및 5단계 게이트(Gate) 기각·보완·승인 체크리스트 원장</p>
+      <p class="sub">초기 후보 9종 미승인 배제(31.0~54.5점) · 66.4점 선별안 내 22개 미승인 결함 교정 · 58개 승인 항목 분석을 통한 5대 기준 확립 및 최종 결론 제출 기록</p>
     </div>
     <div>
-      <a class="pdf-btn" href="./audit-spec.pdf" target="_blank" rel="noopener">📄 요약 기술서 PDF 열람 (A4 2매)</a>
+      <a class="pdf-btn" href="./audit-spec.pdf" target="_blank" rel="noopener">📄 요약 기술서 PDF 열람 (A4 3매)</a>
     </div>
   </div>
 </header>
 
 <nav class="tabs">
   <div class="wrap">
-    <button class="active" onclick="switchTab(0)">1. AI 도구 활용 구간 명세</button>
-    <button onclick="switchTab(1)">2. 5단계 내용 승인 및 기각·보완 절차</button>
-    <button onclick="switchTab(2)">3. 내용 승인 80대 체크리스트 원장</button>
-    <button onclick="switchTab(3)">4. 인용 문헌 · 공식 통계 대조표</button>
+    <button class="active" onclick="switchTab(0)">1. AI 활용 구간 및 검증 흐름</button>
+    <button onclick="switchTab(1)">2. 후보군 평가(9종 미승인) &amp; 66.4점 내부 결함 분석</button>
+    <button onclick="switchTab(2)">3. 미승인(22건)·승인(58건) 80대 체크리스트 원장</button>
+    <button onclick="switchTab(3)">4. 승인 항목 단계별 정리 · 5대 기준 확립 · 최종 결론</button>
+    <button onclick="switchTab(4)">5. 인용 문헌 · 통계 원문 대조표</button>
   </div>
 </nav>
 
 <main>
   <div class="kpi-grid">
-    <div class="kpi">
-      <div class="lbl">AI 활용 투입 구간</div>
-      <div class="val">4개 기능 영역</div>
-      <div class="desc">비교입법 탐색 · 통계 대조 · 조문 점검 · 가독성 교열</div>
+    <div class="kpi warn">
+      <div class="lbl">1차 후보군 정량 평가</div>
+      <div class="val">10종 중 9종 미승인</div>
+      <div class="desc">31.0~54.5점 9개 안건 기각 · 66.4점 단일안만 선별</div>
+    </div>
+    <div class="kpi warn">
+      <div class="lbl">66.4점 선별안 내부 점검</div>
+      <div class="val">22개 항목 미승인</div>
+      <div class="desc">국회법 구멍(S02: 54%)·모집 병목(S06: 60%) 등 적발</div>
     </div>
     <div class="kpi">
-      <div class="lbl">단계별 내용 승인 절차</div>
-      <div class="val">5단계 Gate 심사</div>
-      <div class="desc">병합 시험안 기각(Gate 2) 및 단일 법제안 보완 확정</div>
+      <div class="lbl">승인 항목 분석 및 기준화</div>
+      <div class="val">58개 승인 ➔ 5대 기준</div>
+      <div class="desc">합헌·수리분업·무결신속·균형책임·가독실증 기준 확립</div>
     </div>
-    <div class="kpi">
-      <div class="lbl">정밀 점검 체크리스트</div>
-      <div class="val">80개 항목 승인</div>
-      <div class="desc">법제·재정(20) + 초당적 수용성(30) + 가독성·문헌(30)</div>
-    </div>
-    <div class="kpi">
-      <div class="lbl">서술 호흡 및 원문 대조</div>
-      <div class="val">165문장 · 14문헌</div>
-      <div class="desc">본문 8~12단어 기준 점검 및 발간 원문 대조 완료</div>
+    <div class="kpi good">
+      <div class="lbl">최종 결론 도출 및 제출</div>
+      <div class="val">3대 입법 관문 확정</div>
+      <div class="desc">165문장 8~12단어 · 14문헌 대조 · A4 10매 제출</div>
     </div>
   </div>
 
   <!-- TAB 1 -->
   <section class="panel active">
     <div class="card">
-      <h2>1. 생성형 AI 도구 활용 영역 및 원문 검증 방식</h2>
-      <p class="lead">본 제안서 연구·집필 공정에서 생성형 인공지능 도구가 투입된 작업 구간, 세부 산출 과제, 그리고 최종 원고 반영 전 수행한 원문 대조·승인 기준은 아래와 같다.</p>
+      <h2>1. 생성형 AI 도구 활용 구간 및 단계별 검증·결론 도출 구조</h2>
+      <p class="lead">본 제안서는 생성형 인공지능을 아래 4개 기능 구간에 활용하되, 도출된 후보안과 세부 설계 항목에 대해 정량 검증 기준(법규 충돌·원가 역전·계량 불능·복합 과적 보유 시 45점 상한 캡 적용)을 적용하여 미승인 요소를 순차 배제하고, 검증을 통과한 승인 항목을 단계별로 정리·분석하여 5대 입법 설계 기준과 최종 결론을 확립해 제출하였다.</p>
+
+      <div style="margin:14px 0 18px; overflow-x:auto;">
+        <svg viewBox="0 0 1020 136" width="100%" style="min-width:780px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:8px;">
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#1e3a8a"/>
+            </marker>
+          </defs>
+          <rect x="12" y="18" width="222" height="98" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+          <text x="123" y="42" text-anchor="middle" font-size="12.5" font-weight="800" fill="#991b1b">1단계 · 후보 10종 정량 평가</text>
+          <text x="123" y="63" text-anchor="middle" font-size="11" fill="#334155">31.0~54.5점 9종 미승인 배제</text>
+          <text x="123" y="81" text-anchor="middle" font-size="11" fill="#334155">(병합안·원가역전·법충돌 폐기)</text>
+          <text x="123" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">➔ 66.4점 단일 원형만 선별</text>
+
+          <line x1="234" y1="67" x2="262" y2="67" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
+
+          <rect x="266" y="18" width="232" height="98" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+          <text x="382" y="42" text-anchor="middle" font-size="12.5" font-weight="800" fill="#92400e">2단계 · 66.4점 내부 결함 해부</text>
+          <text x="382" y="63" text-anchor="middle" font-size="11" fill="#334155">S01~S09 점검 (최저 S02: 54%)</text>
+          <text x="382" y="81" text-anchor="middle" font-size="11" fill="#b91c1c" font-weight="700">미승인 22항목 적발·제거</text>
+          <text x="382" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">➔ 승인 58항목 추출·분류</text>
+
+          <line x1="498" y1="67" x2="526" y2="67" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
+
+          <rect x="530" y="18" width="228" height="98" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+          <text x="644" y="42" text-anchor="middle" font-size="12.5" font-weight="800" fill="#162d4c">3단계 · 5대 입법 설계 기준 확립</text>
+          <text x="644" y="63" text-anchor="middle" font-size="11" fill="#334155">①합헌·무개헌 ②수리·기관분업</text>
+          <text x="644" y="81" text-anchor="middle" font-size="11" fill="#334155">③무결·30일종료 ④균형·책임공시</text>
+          <text x="644" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">⑤시민가독(8~12단어)·원문실증</text>
+
+          <line x1="758" y1="67" x2="786" y2="67" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
+
+          <rect x="790" y="18" width="216" height="98" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
+          <text x="898" y="42" text-anchor="middle" font-size="12.5" font-weight="800" fill="#065f46">4단계 · 최종 결론 도출·제출</text>
+          <text x="898" y="63" text-anchor="middle" font-size="11" fill="#334155">국회법 3대 시간주권 관문 완성</text>
+          <text x="898" y="81" text-anchor="middle" font-size="11" fill="#334155">14종 실존 문헌·통계 100% 일치</text>
+          <text x="898" y="100" text-anchor="middle" font-size="11" font-weight="800" fill="#047857">[최종 제안서 A4 10매 제출]</text>
+        </svg>
+      </div>
+
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th style="width:18%;">활용 구간</th>
-              <th style="width:32%;">도구 투입 세부 과제</th>
-              <th style="width:34%;">인간 검토 · 원문 대조 및 수정 반영 내역</th>
-              <th style="width:16%;">반영 위치</th>
+              <th style="width:18%;">AI 도구 투입 구간</th>
+              <th style="width:32%;">세부 활용 과제</th>
+              <th style="width:34%;">검증 과정에서 적발된 미승인 요소 및 교정 조치</th>
+              <th style="width:16%;">최종 반영 위치</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>① 해외 비교입법 및 판례 구조 정리</strong></td>
-              <td>핀란드 의회 미래위원회, 영국 웨일스 미래세대위원장, 호주·네덜란드 세대회계 보고서, 독일 연방헌법재판소 기후보호법 결정(2021), 일본 지자체 ‘퓨처 디자인’ 운영 구조 비교</td>
-              <td>국회도서관 『최신외국정책정보 제38호(2026.11.16)』 및 판례 원문과 대조하여 각 제도의 단독 도입 한계점(선언적 권고, 의원입법 미연결 등)을 도출하고 한국 「국회법」 결합 구조로 재설계</td>
-              <td>제1장 나절<br>제3장 다절<br>제4장 가절</td>
+              <td><strong>① 비교입법·판례 탐색</strong></td>
+              <td>핀란드·영국 웨일스·호주·네덜란드·독일 헌재·일본 퓨처 디자인 운영 구조 조사</td>
+              <td>단순 해외 제도 소개에 그친 초안 서술을 미승인 처리하고, 국회도서관 『최신외국정책정보 제38호(2026.11)』 원문 대조를 통해 각국 제도의 단독 도입 한계점과 한국형 결합 방식을 도출</td>
+              <td>제1장 나절<br>제4장 가절</td>
             </tr>
             <tr>
-              <td><strong>② 공식 인구·장기재정 통계 교차 점검</strong></td>
-              <td>중위연령·노년부양비 추이 및 2025~2072년 국가채무·GDP 대비 채무비율·장기 경제성장률 전망치 추출 보조</td>
-              <td>통계청 『장래인구추계(2022~2072)』 및 국회예산정책처 『2025~2072년 NABO 장기재정전망(2025.2)』 원문 수치를 직접 확인하여 구(舊) 연도 오기 가능성을 배제하고 전 문서 수치 통일</td>
-              <td>제2장 가절<br>제3장 나·다절</td>
+              <td><strong>② 인구·재정 통계 점검</strong></td>
+              <td>중위연령·노년부양비 및 2025~2072년 장기 국가채무·성장률 추이 정리</td>
+              <td>초안 참고문헌의 연도 불일치(‘2024~2072 NABO 전망’)를 미승인 적발하여 실제 발간본인 『2025~2072년 NABO 장기재정전망(2025.2)』 수치로 전 문서 교체</td>
+              <td>제2장 가절<br>참고문헌란</td>
             </tr>
             <tr>
-              <td><strong>③ 현행 「국회법」 조문 및 심사 절차 분석</strong></td>
-              <td>「국회법」 제58조(공청회), 제79조의2(비용추계서 제출), 제86조(체계·자구 심사) 및 위원회 대안 처리 관행 검토</td>
-              <td>미첨부 사유서 관행, 위원회 통합 대안 추계 생략, 법제사법위원회 권한 경계, 국회미래연구원·예산정책처 역할 분담 기준을 검토하여 3단계 입법 장치(제79조의2 개정·제58조 특례·제79조의3 신설) 확정</td>
+              <td><strong>③ 국회법 절차·수리 검토</strong></td>
+              <td>「국회법」 제58조·제79조의2·제86조 조문 대조 및 후보군 정량 실행성 검토</td>
+              <td>9개 미달 후보안(31.0~54.5점)과 행복도 복식 추계안을 기각하고, 66.4점 선별안의 미첨부 사유서·통합 대안 추계생략·법사위 충돌·모집 병목 결함을 제거</td>
               <td>제2장 나절<br>제3장 가·라·마절</td>
             </tr>
             <tr>
-              <td><strong>④ 비전공 독자 용어 평이화 및 문장 호흡 교열</strong></td>
-              <td>재정·입법 전문 용어의 일상어 치환 후보 점검, 서술 문장 어절 수(8~12단어) 계측, 학술 이론 출처 분리 및 맞춤법 교열</td>
-              <td>‘코호트·비용추계서·위원회 대안·순편익·Comply or Explain’을 비전공 시민 눈높이 표현으로 확정하고, 5대 입증 학술 이론을 본문 서술에서 분리하여 별도 출처 행으로 배치</td>
-              <td>본문 전 장(1~5장)<br>참고문헌 출처란</td>
+              <td><strong>④ 가독성·문장 호흡 교열</strong></td>
+              <td>전문 용어 일상어 치환 점검, 문장 어절 수 계측, 이론 출처 분리</td>
+              <td>18~28어절 장문과 본문 내 학술 이론 반복 설명을 미승인 처리하여, 전 서술문(165문장)을 8~12단어로 정돈하고 5대 학술 이론은 별도 출처 행으로 분리</td>
+              <td>본문 전 장(1~5장)<br>이론 출처 행</td>
             </tr>
           </tbody>
         </table>
@@ -152,91 +200,38 @@
   <!-- TAB 2 -->
   <section class="panel">
     <div class="card">
-      <h2>2. 5단계 내용 승인 게이트(Gate 1~5) 및 기각·보완 이력</h2>
-      <p class="lead">초기 의제 탐색부터 최종 제출본 확정까지 총 5단계의 내용 승인 절차를 거쳤으며, 기준에 미달한 병합 구상안과 과잉 산식은 중간 게이트에서 기각·삭제하였다.</p>
-
-      <div style="margin:14px 0 18px; overflow-x:auto;">
-        <svg viewBox="0 0 980 128" width="100%" style="min-width:760px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:8px;">
-          <defs>
-            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-              <path d="M0,0 L8,4 L0,8 Z" fill="#1e3a8a"/>
-            </marker>
-          </defs>
-          <rect x="14" y="20" width="168" height="86" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
-          <text x="98" y="45" text-anchor="middle" font-size="12.5" font-weight="800" fill="#162d4c">Gate 1 · 의제 범위 설정</text>
-          <text x="98" y="66" text-anchor="middle" font-size="11" fill="#334155">기논의 단편 정책 배제</text>
-          <text x="98" y="84" text-anchor="middle" font-size="11" fill="#047857" font-weight="700">[승인] 입법 시간주권 설정</text>
-
-          <line x1="182" y1="63" x2="208" y2="63" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
-
-          <rect x="212" y="20" width="176" height="86" rx="6" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
-          <text x="300" y="45" text-anchor="middle" font-size="12.5" font-weight="800" fill="#991b1b">Gate 2 · 병합 시험안 감사</text>
-          <text x="300" y="66" text-anchor="middle" font-size="11" fill="#334155">4개 주제 교차병합안 정량평가</text>
-          <text x="300" y="84" text-anchor="middle" font-size="11" fill="#b91c1c" font-weight="700">[기각] 병합폐기·단일안 채택</text>
-
-          <line x1="388" y1="63" x2="414" y2="63" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
-
-          <rect x="418" y="20" width="172" height="86" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
-          <text x="504" y="45" text-anchor="middle" font-size="12.5" font-weight="800" fill="#162d4c">Gate 3 · 법제 사각지대 보완</text>
-          <text x="504" y="66" text-anchor="middle" font-size="11" fill="#334155">생략사유서·통합대안 재계산</text>
-          <text x="504" y="84" text-anchor="middle" font-size="11" fill="#047857" font-weight="700">[승인] 기관 역할분리 확정</text>
-
-          <line x1="590" y1="63" x2="616" y2="63" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
-
-          <rect x="620" y="20" width="172" height="86" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
-          <text x="706" y="45" text-anchor="middle" font-size="12.5" font-weight="800" fill="#162d4c">Gate 4 · 초당적 수용성 검증</text>
-          <text x="706" y="66" text-anchor="middle" font-size="11" fill="#334155">지출·감세 대칭·미래투자 순익</text>
-          <text x="706" y="84" text-anchor="middle" font-size="11" fill="#047857" font-weight="700">[승인] 30일 자동종료 반영</text>
-
-          <line x1="792" y1="63" x2="818" y2="63" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arr)"/>
-
-          <rect x="822" y="20" width="144" height="86" rx="6" fill="#ecfdf5" stroke="#047857" stroke-width="1.8"/>
-          <text x="894" y="45" text-anchor="middle" font-size="12.5" font-weight="800" fill="#065f46">Gate 5 · 최종 출고 승인</text>
-          <text x="894" y="66" text-anchor="middle" font-size="11" fill="#334155">평이화·8~12단어·출처분리</text>
-          <text x="894" y="84" text-anchor="middle" font-size="11" fill="#047857" font-weight="800">[최종 승인] 80항목 통과</text>
-        </svg>
+      <h2>2-1. 초기 검토 후보 10종 정량 평가 결과 (9종 미승인 배제 vs 1종 조건부 선별)</h2>
+      <p class="lead">초기 구상된 단독 의제·교차 병합 시험안·단편 대조군 총 10종에 대해 동일 정량 기준(법규 충돌·원가 역전·계량 불능·제도 과적 보유 시 45점 이하 상한 캡 적용, 최소 통과선 60점)을 적용한 결과, 9종이 미승인(31.0~54.5점) 판정되어 배제되었고 유일하게 60점을 넘긴 1종(66.4점)만 선별되었다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:15%;">후보 구분</th>
+              <th style="width:28%;">검토 안건명</th>
+              <th style="width:9%;">검증 점수</th>
+              <th style="width:14%;">검토 결과</th>
+              <th style="width:34%;">미승인(기각·보류) 또는 조건부 선별 핵심 사유</th>
+            </tr>
+          </thead>
+          <tbody id="candBody"></tbody>
+        </table>
       </div>
+    </div>
 
-      <div class="gate-list">
-        <div class="gate-item">
-          <div class="gate-head">
-            <span class="gate-title">Gate 1. 의제 범위 설정 및 기논의 단편 정책 배제 심사</span>
-            <span class="tag ok">내용 승인</span>
-          </div>
-          <div>공모 요강의 취지(‘이미 논의 중인 의제를 넘어 앞으로 주목해야 할 새로운 미래의제’)에 맞추어 단편적 출산장려금·청년수당 논의를 배제하고, 유권자 인구 고령화로 인해 국회 법안 심사가 5년 단기 시계에 갇히는 구조적 문제와 다세대(1020·3040·5080) 숙의 해법을 핵심 범위로 승인함.</div>
-        </div>
-
-        <div class="gate-item rejected">
-          <div class="gate-head">
-            <span class="gate-title">Gate 2. 복수 안건 교차 병합안 정량 감사 및 부적합 요소 기각</span>
-            <span class="tag rej">병합안 기각 · 단일안 재설계</span>
-          </div>
-          <div>4개의 서로 다른 미래 정책 주제를 3개의 제안서에 교차 통합하는 구상안을 10개 영역 정량 평가표로 감사한 결과, ① 단일 제안서 내 인과관계 분산, ② 주관적 행복도 지수의 임의 화폐환산 무리수 문제가 확인되어 병합안을 전량 폐기하고 「국회법」 절차 개정에 집중한 단일 의제만 채택함.</div>
-        </div>
-
-        <div class="gate-item">
-          <div class="gate-head">
-            <span class="gate-title">Gate 3. 국회법 심사 사각지대 보완 및 수행 기관 역할 분리 승인</span>
-            <span class="tag ok">보완 후 승인</span>
-          </div>
-          <div>초안 검토 과정에서 드러난 현행 입법 실무상의 빈틈 4가지를 보완함. ① 중점법안 비용추계 생략 사유서 대신 3단계 범위 추계 의무화, ② 소위 통합 수정안(위원회 대안) 7일 신속 재계산 신설, ③ 법사위 체계·자구 심사 권한 외 월권 배제, ④ 국회예산정책처(30일 수리 추계)와 국회미래연구원(회기 초 거시 위험 기준선 설정)의 기능 분리를 확정함.</div>
-        </div>
-
-        <div class="gate-item">
-          <div class="gate-head">
-            <span class="gate-title">Gate 4. 여야 초당적 입법 수용성 및 헌법상 입법권 조화 검증</span>
-            <span class="tag ok">보완 후 승인</span>
-          </div>
-          <div>「국회미래연구원법」 제5조(정치적 중립) 및 헌법상 다수결 원리를 기준으로 30개 점검 항목을 심사함. 재정 지출만 억제하는 편향을 막기 위해 대규모 감세 법안을 대칭 검증 대상에 포함하고, 아동·청년·기후 투자의 30년 장기 순이익을 함께 산출하며, 접수 후 30일 자동 종료 조항으로 의사진행 지연 악용 소지를 제거함.</div>
-        </div>
-
-        <div class="gate-item">
-          <div class="gate-head">
-            <span class="gate-title">Gate 5. 비전공 시민 가독성 · 문장 호흡 · 입증 이론 출처 분리 최종 승인</span>
-            <span class="tag ok">최종 출고 승인</span>
-          </div>
-          <div>서류 통과 후 10일간 진행되는 대국민 공개검증 가독성을 높이기 위해 입법·통계 전문 용어를 일상어로 풀어 쓰고, 전체 165개 서술 문장을 8~12단어 호흡으로 정돈하였으며, 본문 내 학술 이론 설명을 걷어내고 별도 출처 표기 행과 실존 검증된 14종 참고문헌 목록으로 분리하여 최종 승인함.</div>
-        </div>
+    <div class="card">
+      <h2>2-2. 선별된 ‘66.4점 원형’의 9개 영역별 승인율 해부 (60점대 정체 원인 분석)</h2>
+      <p class="lead">유일하게 60점대를 통과한 ‘입법 시간주권’ 초안(66.4점) 역시 세부 9개 영역 점검 결과, 국회법 우회구멍(S02: 54%)·시민배심 모집 병목(S06: 60%)·서지 오기 및 복식 추계 무리수(S05: 65%) 등 미승인 결함이 포함되어 있어 이를 제거하고 승인 항목만 재구성하는 기준 확립 단계로 이행하였다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:28%;">세부 점검 영역 (Stage 01~09)</th>
+              <th style="width:22%;">66.4점 초안 승인율</th>
+              <th style="width:50%;">초안 내 미승인 요인 및 보완 과제</th>
+            </tr>
+          </thead>
+          <tbody id="stageBody"></tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -244,24 +239,28 @@
   <!-- TAB 3 -->
   <section class="panel">
     <div class="card">
-      <h2>3. 내용 승인 80대 체크리스트 원장 (전 항목 점검 내역)</h2>
-      <p class="lead">제안서 내용 확정 과정에서 순차 검증한 3대 영역 80개 세부 체크리스트와 실제 원고 보완 결과이다.</p>
+      <h2>3. 66.4점 선별안 내부 ‘미승인 항목(22건)’ 및 ‘승인 항목(58건)’ 전수 원장</h2>
+      <p class="lead">선별된 66.4점 원형을 구성하던 세부 내용 중 승인되지 않은 22개 결함 항목(기각·대체 완료)과 최종 설계 기준 확립의 근거가 된 58개 승인 항목 전체 기록이다.</p>
       <div class="filter-bar">
-        <button class="active" onclick="filterChk('ALL', this)">전체 (80)</button>
-        <button onclick="filterChk('법제·재정·기관', this)">영역 A: 법제·재정·기관 (20)</button>
-        <button onclick="filterChk('초당적 수용성·헌법', this)">영역 B: 초당적 수용성·헌법 (30)</button>
-        <button onclick="filterChk('가독성·문헌·조판', this)">영역 C: 가독성·문헌·조판 (30)</button>
-        <input type="text" id="chkSearch" placeholder="점검 항목 또는 보완 내용 검색 (예: 감세, 30일, 코호트, NABO)..." oninput="renderChk()">
+        <button class="active" onclick="filterChk('ALL', this)">전체 항목 (80)</button>
+        <button onclick="filterChk('미승인', this)">미승인 · 기각/교정 항목 (22)</button>
+        <button onclick="filterChk('승인', this)">승인 · 기준확립 반영 항목 (58)</button>
+        <button onclick="filterChk('기준1', this)">기준1: 합헌·법제 (10)</button>
+        <button onclick="filterChk('기준2', this)">기준2: 수리·분업 (10)</button>
+        <button onclick="filterChk('기준3', this)">기준3: 무결·신속 (12)</button>
+        <button onclick="filterChk('기준4', this)">기준4: 균형·책임 (14)</button>
+        <button onclick="filterChk('기준5', this)">기준5: 가독·실증 (12)</button>
+        <input type="text" id="chkSearch" placeholder="항목 검색 (예: 미첨부, 법사위, 감세, 300인, NABO)..." oninput="renderChk()">
       </div>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th style="width:9%;">코드</th>
-              <th style="width:16%;">검증 영역</th>
-              <th style="width:31%;">점검 기준</th>
-              <th style="width:35%;">검토 및 원고 반영 내역</th>
-              <th style="width:9%;">결과</th>
+              <th style="width:8%;">코드</th>
+              <th style="width:10%;">결과</th>
+              <th style="width:15%;">단계 / 기준 구분</th>
+              <th style="width:31%;">점검 대상 내용 (초안 미승인 사항 / 승인 사항)</th>
+              <th style="width:36%;">단계별 분석 및 기준 확립·교정 내역</th>
             </tr>
           </thead>
           <tbody id="chkBody"></tbody>
@@ -273,8 +272,43 @@
   <!-- TAB 4 -->
   <section class="panel">
     <div class="card">
-      <h2>4. 인용 문헌 · 공식 통계 원문 대조 확인표 (14종)</h2>
-      <p class="lead">제안서 본문 및 별도 이론 출처란에 인용된 국내외 공식 보고서·법령·학술 문헌 14종의 발간 실재성 및 수치 대조 결과이다.</p>
+      <h2>4. 승인 항목의 단계별 정리·분석 ➔ 5대 입법 설계 기준 확립 ➔ 최종 결론 제출</h2>
+      <p class="lead">22개 미승인 요소를 제거한 뒤 남은 58개 승인 항목을 법제·수리·절차·균형·가독성의 5개 층위로 분류·분석하여 ‘5대 입법 설계 기준’을 확립하고, 이를 토대로 최종 제안 결론을 확정하여 제출하였다.</p>
+
+      <div class="std-grid">
+        <div class="std-box">
+          <div class="std-title">확립 기준 1. [헌법 및 국회법 절차 정합성 기준] (승인 항목 S1-01 ~ S1-10 종합)</div>
+          <div>헌법 개정이 필요한 차등투표·원외 거부권 및 법사위 체계·자구 범위 외 연계를 배제하고, 헌법 제40조·제41조의 국회 입법권과 평등선거 원칙 아래 「국회법」 소관 상임위 심사 및 본회의 상정 확인 절차만으로 작동시킨다(재난·긴급 경제위기 입법 예외 보장).</div>
+        </div>
+        <div class="std-box">
+          <div class="std-title">확립 기준 2. [수리 모형 실증성 및 수행기관 분업 기준] (승인 항목 S2-01 ~ S2-10 종합)</div>
+          <div>통약 불가능한 주관적 행복도의 개별 법안 인과 추계를 배제하고 검증된 코호트 세대회계 모형을 채택하되, 개별 중점법안 30일 수리 계산은 ‘국회예산정책처’가 전담하고 ‘국회미래연구원’은 2년 회기 초 국가 장기위험 기준선 보고서만 발간하여 연구 독립성(법 제5조)과 전문성을 지킨다.</div>
+        </div>
+        <div class="std-box">
+          <div class="std-title">확립 기준 3. [추계 사각지대 해소 및 30일 신속성 기준] (승인 항목 S3-01 ~ S3-12 종합)</div>
+          <div>대상을 연평균 1,000억 원(30년 3조 원) 이상 중점법안으로 좁히고, 단순 생략 사유서 대신 3단계 범위 추계와 소위 통합 대안 ‘7일 신속 재계산표’를 의무화하며, 2년 상설 300인 시민단(건별 36인 배정, 연 12억 원)과 ‘접수 후 30일 자동 종료’ 규칙으로 모집 병목과 의안 심사 지연을 원천 차단한다.</div>
+        </div>
+        <div class="std-box">
+          <div class="std-title">확립 기준 4. [세출·세입 양방향 균형 및 대국민 설명책임 기준] (승인 항목 S4-01 ~ S4-14 종합)</div>
+          <div>재정 지출 확대뿐 아니라 재원 대책 없는 대규모 세금 감면 법안을 동일 기준으로 검증하고 아동·청년·교육·기후 투자의 30년 장기 순이익을 공식 산출하며, 미래 과중부담 법안 원안 처리 시 표결은 보장하되 기대효과·대체 재원·재점검 시점 설명서를 국회 인터넷 첫 화면에 공시(‘보완 아니면 공개 설명’)한다.</div>
+        </div>
+        <div class="std-box">
+          <div class="std-title">확립 기준 5. [비전공 시민 가독성 및 공식 문헌 실증 기준] (승인 항목 S5-01 ~ S5-12 종합)</div>
+          <div>비정책 일반 시민도 즉시 이해하도록 전문 용어를 일상어로 풀어 쓰고 본문 165개 전 서술문을 8~12단어 호흡으로 정돈하며, 5대 학술 이론은 별도 출처 행으로 분리하고 14종 공식 통계·판례·문헌의 원문 일치를 완료한다.</div>
+        </div>
+        <div class="std-box final">
+          <div class="std-title">■ 최종 도출 결론 및 제출 완료 아키텍처 (66.4점 조건부 초안 ➔ 5대 기준 확립 최종본 제출)</div>
+          <div>위 단계별 분석과 5대 기준 확립을 통해 <strong>① 제1관문: 숫자 거울(세출·세입·미래투자 순이익을 함께 비추는 30년 세대별 손익계산서 및 통합 대안 7일 재계산)</strong>, <strong>② 제2관문: 사람 거울(상설 300인 시민단 중 청년·3040·‘2055년 후손 대리 어르신’ 각 12인이 참여하는 36인 숙의배심 · 30일 내 자동 종료)</strong>, <strong>③ 제3관문: 책임 거울(국회 표결권을 보장하는 ‘보완 아니면 대국민 공개 설명’ 절차)</strong>의 3단계 제도 모델을 최종 결론으로 도출하여 제안서(A4 10매)로 제출하였다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5 -->
+  <section class="panel">
+    <div class="card">
+      <h2>5. 인용 문헌 · 공식 통계 원문 대조 확인표 (14종)</h2>
+      <p class="lead">초안 단계의 연도 오기 문헌을 배제하고 원문 실재성 및 수치를 전수 대조하여 확정한 14종 공식 서지 목록이다.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -286,20 +320,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>01</td><td>국회도서관 (2026. 11.)</td><td>『미래세대 중심의 정책설계: 영국 웨일스, 핀란드, 호주 및 EU 사례를 중심으로』, 최신외국정책정보 제2026-14호(통권 제38호)</td><td>해외 미래세대 입법제도 운영 방식 및 시사점 대조 확인</td></tr>
-            <tr><td>02</td><td>국회예산정책처 (2025. 2.)</td><td>『2025~2072년 NABO 장기재정전망』</td><td>국가채무(1,270.4조→7,303.6조 원), GDP 대비 비율(47.8%→173.0%), 성장률(0.3%) 원문 일치 확인</td></tr>
-            <tr><td>03</td><td>통계청 (2023)</td><td>『장래인구추계: 2022~2072년』</td><td>중위연령(2025년 46세 상회, 2031년 50세 돌파) 및 노년부양비 추계 일치 확인</td></tr>
-            <tr><td>04</td><td>국회연금개혁특별위원회 공론화위원회 (2024)</td><td>『연금개혁 공론화 주요 의제 및 시민대표단 숙의 결과 보고서』</td><td>제21대 국회 500인 시민대표단 숙의 실증 사례 반영</td></tr>
-            <tr><td>05</td><td>국회미래연구원 (2022)</td><td>『성장사회를 넘어 성숙사회로』</td><td>장기 사회 전환 방향 및 미래연구 기조 연계 확인</td></tr>
-            <tr><td>06</td><td>국회미래연구원 (2024)</td><td>『한국인의 행복조사 심층분석 보고서』</td><td>회기 초 장기 위험 국가기준선 보고서 작성 근거로 연결</td></tr>
-            <tr><td>07</td><td>독일 연방헌법재판소 (2021. 3. 24.)</td><td>1 BvR 2656/18 (연방기후보호법 위헌확인 결정)</td><td>입법 지연에 따른 미래세대 기본권·자유 침해 예방 법리 인용</td></tr>
-            <tr><td>08</td><td>Auerbach, Gokhale &amp; Kotlikoff (1994)</td><td>Generational accounting: A meaningful way to evaluate fiscal policy, <em>JEP</em>, 8(1), 73–94</td><td>제3장 제1장치 출생 코호트별 30년 세대회계 모형 이론 출처 표기</td></tr>
-            <tr><td>09</td><td>Saijo, T. (Ed.) (2020)</td><td><em>Future Design: Incorporating Preferences of Future Generations for Sustainability</em>, Springer</td><td>제3장 제2장치 ‘2055년 후손 대리 시민배심’ 역할 부여 숙의 이론 출처 표기</td></tr>
-            <tr><td>10</td><td>Maslow, A. H. (1943)</td><td>A theory of human motivation, <em>Psychological Review</em>, 50(4), 370–396</td><td>제1장 나절 단기 불안 방어와 상위 미래 설계 동기 이론 출처 표기</td></tr>
-            <tr><td>11</td><td>Maslow, A. H. (1969)</td><td>The farther reaches of human nature, <em>Journal of Transpersonal Psychology</em>, 1(1), 1–9</td><td>제1장 나절 기성세대의 후손 배려(자기초월 동기) 이론 출처 표기</td></tr>
-            <tr><td>12</td><td>한스 요나스 (2005, 원저 1979)</td><td>『책임의 원칙: 기술 시대의 생태학적 윤리』 (이진우 역), 서광사</td><td>제3장 다절 미래세대에 대한 현세대 입법 책임 윤리 출처 표기</td></tr>
-            <tr><td>13</td><td>존 롤스 (2003, 원저 1971)</td><td>『정의론』 (황경식 역), 이학사</td><td>제3장 다절 세대 간 정의 및 공정한 저축 원칙 이론 출처 표기</td></tr>
-            <tr><td>14</td><td>로만 크르즈나릭 (2021)</td><td>『좋은 조상: 단기주의 시대에 장기적으로 생각하기』 (이순희 역), 더퀘스트</td><td>제5장 가절 장기 미래 설계(‘대성당 사고’) 이론 출처 표기</td></tr>
+            <tr><td>01</td><td>국회도서관 (2026. 11.)</td><td>『미래세대 중심의 정책설계: 영국 웨일스, 핀란드, 호주 및 EU 사례를 중심으로』, 최신외국정책정보 제2026-14호(통권 제38호)</td><td>해외 미래세대 입법제도 운영 방식 및 한계점 대조 반영</td></tr>
+            <tr><td>02</td><td>국회예산정책처 (2025. 2.)</td><td>『2025~2072년 NABO 장기재정전망』</td><td>초안 연도 오기 교정 완료 · 국가채무(1,270.4조→7,303.6조 원, 173.0%), 성장률(0.3%) 일치</td></tr>
+            <tr><td>03</td><td>통계청 (2023)</td><td>『장래인구추계: 2022~2072년』</td><td>중위연령(2025년 46세 상회, 2031년 50세 돌파) 및 노년부양비 추계 일치</td></tr>
+            <tr><td>04</td><td>국회연금개혁특별위원회 공론화위원회 (2024)</td><td>『연금개혁 공론화 주요 의제 및 시민대표단 숙의 결과 보고서』</td><td>제21대 국회 500인 시민대표단 숙의 실증 경험 계승</td></tr>
+            <tr><td>05</td><td>국회미래연구원 (2022)</td><td>『성장사회를 넘어 성숙사회로』</td><td>장기 사회 전환 연구 기조 연계 확인</td></tr>
+            <tr><td>06</td><td>국회미래연구원 (2024)</td><td>『한국인의 행복조사 심층분석 보고서』</td><td>개별 법안 추계 오용을 배제하고 회기 초 국가기준선 보고서 근거로 정립</td></tr>
+            <tr><td>07</td><td>독일 연방헌법재판소 (2021. 3. 24.)</td><td>1 BvR 2656/18 (연방기후보호법 위헌확인 결정)</td><td>입법 지연에 따른 미래세대 자유 침해 예방 법리 인용</td></tr>
+            <tr><td>08</td><td>Auerbach, Gokhale &amp; Kotlikoff (1994)</td><td>Generational accounting: A meaningful way to evaluate fiscal policy, <em>JEP</em>, 8(1), 73–94</td><td>제3장 제1장치 출생 코호트별 30년 세대회계 모형 별도 출처 표기</td></tr>
+            <tr><td>09</td><td>Saijo, T. (Ed.) (2020)</td><td><em>Future Design: Incorporating Preferences of Future Generations for Sustainability</em>, Springer</td><td>제3장 제2장치 ‘2055년 후손 대리 시민배심’ 역할 부여 숙의 별도 출처 표기</td></tr>
+            <tr><td>10</td><td>Maslow, A. H. (1943)</td><td>A theory of human motivation, <em>Psychological Review</em>, 50(4), 370–396</td><td>제1장 나절 단기 생계 방어와 상위 미래 설계 동기 별도 출처 표기</td></tr>
+            <tr><td>11</td><td>Maslow, A. H. (1969)</td><td>The farther reaches of human nature, <em>Journal of Transpersonal Psychology</em>, 1(1), 1–9</td><td>제1장 나절 선배 시민의 후손 배려(자기초월 동기) 별도 출처 표기</td></tr>
+            <tr><td>12</td><td>한스 요나스 (2005, 원저 1979)</td><td>『책임의 원칙: 기술 시대의 생태학적 윤리』 (이진우 역), 서광사</td><td>제3장 다절 미래세대 책임 윤리 별도 출처 표기</td></tr>
+            <tr><td>13</td><td>존 롤스 (2003, 원저 1971)</td><td>『정의론』 (황경식 역), 이학사</td><td>제3장 다절 세대 간 정의론 별도 출처 표기</td></tr>
+            <tr><td>14</td><td>로만 크르즈나릭 (2021)</td><td>『좋은 조상: 단기주의 시대에 장기적으로 생각하기』 (이순희 역), 더퀘스트</td><td>제5장 가절 장기 미래 설계(‘대성당 사고’) 별도 출처 표기</td></tr>
           </tbody>
         </table>
       </div>
@@ -308,20 +342,48 @@
 </main>
 
 <footer>
-  2026년 국회 미래세대 미래의제 공모전 · 연구 설계 및 내용 검증 기록서 (개인 식별정보 미포함 공개 검증용 원장)
+  2026년 국회 미래세대 미래의제 공모전 · 미승인 내역 배제 및 승인 항목 기반 기준 확립·최종 결론 제출 기술서 (개인 식별정보 미포함)
 </footer>
 
 <script>
-const ITEMS = [{"id": "A-01", "cat": "법제·재정·기관", "item": "헌법 개정 없이 현행 법률 개정만으로 시행 가능한가", "action": "개헌이 필요한 선거연령·가중투표제 논의를 배제하고 「국회법」 제58조·제79조의2 개정 및 제79조의3 신설로 설계", "status": "승인"}, {"id": "A-02", "cat": "법제·재정·기관", "item": "일상 민생 법안 심사 지연을 막는 정량 대상 기준이 있는가", "action": "연평균 1,000억 원 또는 30년 누적 3조 원 이상 재정 변동·사회보험·장기국채·온실가스 감축 중점법안으로 한정", "status": "승인"}, {"id": "A-03", "cat": "법제·재정·기관", "item": "재난·긴급 경제위기 대응 입법의 신속 처리 예외가 있는가", "action": "재난 복구 및 긴급 경제위기 대응 법안은 즉시 심사 가능하도록 예외 조항 명시", "status": "승인"}, {"id": "A-04", "cat": "법제·재정·기관", "item": "현행 5년 단기 비용추계의 시계 한계를 실효적으로 확장했는가", "action": "중점법안에 한해 현행 5년 추계서와 함께 출생연도 묶음(10년 코호트)별 30년 손익계산서 병행 첨부", "status": "승인"}, {"id": "A-05", "cat": "법제·재정·기관", "item": "비용추계 미첨부 사유서 우회 관행을 제어하는 장치가 있는가", "action": "중점법안은 단순 생략 사유서 대신 최소·중간·최대 3단계 범위 추정표 첨부를 의무화", "status": "승인"}, {"id": "A-06", "cat": "법제·재정·기관", "item": "소위원회 통합 수정안(위원회 대안) 단계의 추계 공백을 메웠는가", "action": "여러 법안을 병합한 통합 대안 의결 전 변동 수치를 반영하는 ‘7일 신속 재계산표’ 절차 신설", "status": "승인"}, {"id": "A-07", "cat": "법제·재정·기관", "item": "추계 기관의 처리 지연으로 입법이 정체될 위험을 차단했는가", "action": "법안 접수 후 30일(통합 대안 7일) 경과 시 추계 절차를 자동 종료하고 정상 심사로 이행하도록 설계", "status": "승인"}, {"id": "A-08", "cat": "법제·재정·기관", "item": "법제사법위원회의 체계·자구 심사 권한 범위를 준수했는가", "action": "법사위 심사 요건에 연계하지 않고 소관 상임위원회 의결 및 국회의장 본회의 상정 확인 절차로 한정", "status": "승인"}, {"id": "A-09", "cat": "법제·재정·기관", "item": "국회예산정책처와 국회미래연구원의 인력·법정 기능을 구분했는가", "action": "개별 법안 수리 계산은 예산정책처가 전담하고, 미래연구원은 2년 회기 초 국가 장기위험 기준선만 제시", "status": "승인"}, {"id": "A-10", "cat": "법제·재정·기관", "item": "복수 안건 병합으로 인한 논점 분산 요소를 제거했는가", "action": "초기 검토한 4개 안건 교차 병합 시험안을 자체 정량 감사에서 기각하고 단일 입법 절차 의제로 확정", "status": "승인"}, {"id": "A-11", "cat": "법제·재정·기관", "item": "검증 불가능한 임의 주관지표 화폐환산 산식을 배제했는가", "action": "행복도 지수의 임의 재정 환산 산식을 삭제하고 재정 부담·장기 투자 순이익 표준 산출 구조만 채택", "status": "승인"}, {"id": "A-12", "cat": "법제·재정·기관", "item": "시민 숙의기구 구성에 따른 매 회차 모집 지연을 해결했는가", "action": "건별 신규 모집 대신 2년 임기 ‘상설 다세대 시민숙의단 300인’ 사전 위촉 후 건별 36인 무작위 배정", "status": "승인"}, {"id": "A-13", "cat": "법제·재정·기관", "item": "시민배심 운영 예산이 현실적인 국회 연간 예산 범위 내인가", "action": "연간 중점법안 15회 내외 운영 기준 약 12억 원 규모의 경량 상설 운영 모델로 산정", "status": "승인"}, {"id": "A-14", "cat": "법제·재정·기관", "item": "3세대 배심 분과 구성이 세대 간 균형을 갖추었는가", "action": "19~29세 청년(12인) · 30~49세 중재 세대(12인) · 2055년 후손 대리 50~70대(12인) 동수 구성", "status": "승인"}, {"id": "A-15", "cat": "법제·재정·기관", "item": "제21대 국회 연금개혁 공론화의 실증 경험을 계승했는가", "action": "2024년 국회 연금개혁 시민대표단 500인 숙의 운영 사례를 상임위 공청회 특례 모델의 실증 근거로 연결", "status": "승인"}, {"id": "A-16", "cat": "법제·재정·기관", "item": "숙의배심 권고안이 실제 국회의원 심사 자료에 반영되는가", "action": "채택된 권고의견서를 소관 위원회 심사보고서 첫머리에 의무 수록하도록 규정", "status": "승인"}, {"id": "A-17", "cat": "법제·재정·기관", "item": "일괄적인 국가채무 비율 한도 규제(경직적 재정준칙)와 차별화했는가", "action": "총량 한도 동결 대신 세대별 장기 부담과 미래 투자 순이익을 투명하게 대조하는 정보·숙의 규율 채택", "status": "승인"}, {"id": "A-18", "cat": "법제·재정·기관", "item": "과거 발의된 선언적 미래세대 기본법안의 한계를 극복했는가", "action": "추상적 선언 대신 개별 중점법안 발의·통합심사·본회의 상정 3단계에 직결되는 절차 조문으로 구체화", "status": "승인"}, {"id": "A-19", "cat": "법제·재정·기관", "item": "단계별 도입 로드맵(모형 구축→시범 운영→법제화)이 현실적인가", "action": "2027년 표준모형 확립 → 2028~2029년 특위 시범 운영 → 2030~2032년 전면 시행 3단계 일정 수립", "status": "승인"}, {"id": "A-20", "cat": "법제·재정·기관", "item": "국회미래연구원의 차년도 정규 연구과제로 즉시 전환 가능한가", "action": "표준모형 공동 개발, 특위 연계 시범 공청회 실증, 국회법 개정안 성안 지원 3대 연구 산출물 제시", "status": "승인"}, {"id": "B-01", "cat": "초당적 수용성·헌법", "item": "헌법 제40조(국회 입법권) 및 제41조(대의제 원칙)에 부합하는가", "action": "외부 기구에 법안 거부권을 부여하지 않고 국회의원의 최종 표결권을 100% 보장", "status": "승인"}, {"id": "B-02", "cat": "초당적 수용성·헌법", "item": "헌법상 평등선거(1인 1표) 원칙과 충돌 소지가 없는가", "action": "연령별 차등 투표권 논의를 배제하고 입법 심사 단계의 정보 공개와 공청회 숙의 절차만 보강", "status": "승인"}, {"id": "B-03", "cat": "초당적 수용성·헌법", "item": "「국회미래연구원법」 제5조(정치적 중립성) 원칙을 준수했는가", "action": "미래연구원이 개별 정쟁 법안의 찬반 판정에 개입하지 않고 회기 초 거시 기준선만 연구하도록 격리", "status": "승인"}, {"id": "B-04", "cat": "초당적 수용성·헌법", "item": "특정 정당이나 현행 의석 구도를 겨냥한 편향 어휘를 제거했는가", "action": "특정 정당 지칭이나 의사절차 비하 표현을 전수 배제하고 역대 국회 공통의 제도적 사각지대로 서술", "status": "승인"}, {"id": "B-05", "cat": "초당적 수용성·헌법", "item": "재정 지출 법안과 세입 감소(감세) 법안을 대칭적으로 검증하는가", "action": "대규모 지출 확대뿐 아니라 재원 대책 없는 대규모 세금 감면 법안도 동일 기준(연 1,000억/30년 3조) 적용", "status": "승인"}, {"id": "B-06", "cat": "초당적 수용성·헌법", "item": "아동·청년·교육·기후 투자가 단기 적자로 저평가되는 왜곡을 교정했는가", "action": "초기 5년 투입비만 잡히던 기존 추계를 넘어 30년 시계열의 성장 잠재력 확충·비용 절감 순이익을 함께 표시", "status": "승인"}, {"id": "B-07", "cat": "초당적 수용성·헌법", "item": "원내 다수당의 개혁 입법에 민주적 정당성을 보강하는 유인이 있는가", "action": "30년 손익 검증과 3세대 시민배심 권고를 거친 개혁 법안이 ‘충분한 숙의를 거친 입법’으로 공인받도록 설계", "status": "승인"}, {"id": "B-08", "cat": "초당적 수용성·헌법", "item": "원내 소수당의 고의적 의사진행 지연(발목잡기) 악용을 차단했는가", "action": "추계 및 시민배심 전 과정을 접수 후 30일 내 자동 종료하여 무기한 심사 지연 수단화를 원천 차단", "status": "승인"}, {"id": "B-09", "cat": "초당적 수용성·헌법", "item": "긴박한 정책 판단 시 다수결 원안 처리를 허용하는 자율 규율인가", "action": "‘고쳐 보완하거나 이유를 공개 설명하거나(보완 아니면 공개 설명)’ 방식을 채택해 설명서 공개 시 표결 진행", "status": "승인"}, {"id": "B-10", "cat": "초당적 수용성·헌법", "item": "공개 설명서에 포함될 대국민 책임 항목을 구체화했는가", "action": "장기 투자 기대효과, 대체 재원 조달 계획, 향후 재점검 시점 3대 항목을 국회 인터넷 첫 화면에 공시", "status": "승인"}, {"id": "B-11", "cat": "초당적 수용성·헌법", "item": "정권 교체나 원내 다수당 변경 시에도 공정하게 작동하는 규칙인가", "action": "여야 어느 쪽이 다수당이 되더라도 동일하게 적용되는 절차적 ‘시간의 거울’로서 상호 보험 기능 입증", "status": "승인"}, {"id": "B-12", "cat": "초당적 수용성·헌법", "item": "연금·건강보험·기후 개혁 시 여야 공동의 정치적 부담을 덜어주는가", "action": "개별 정당 단독 발의 시의 표 이탈 부담을 ‘시민배심 권고 수용’이라는 초당적 명분으로 분산", "status": "승인"}, {"id": "B-13", "cat": "초당적 수용성·헌법", "item": "양방향 가상 검증 예시(부담 전가 법안 vs 미래 투자 법안)를 제시했는가", "action": "본문 제3장 나절 비교표를 통해 단기 감세·지출 법안([사례 A])과 청년·기후 투자 법안([사례 B]) 대조 실증", "status": "승인"}, {"id": "B-14", "cat": "초당적 수용성·헌법", "item": "50~80대 기성 유권자 세대를 갈등 대상이 아닌 연대 주체로 존중했는가", "action": "기성세대를 비난하는 구도를 배제하고 ‘2055년 후손 대리 선배 시민’의 공적 역할과 양심을 제도화", "status": "승인"}, {"id": "B-15", "cat": "초당적 수용성·헌법", "item": "30~40대 현역 부양·양육 세대의 중재 역할을 제도 안에 반영했는가", "action": "시민배심 제2분과(12인)를 부모 부양과 자녀 양육을 함께 겪는 30~49세 허리 중재 세대로 배정", "status": "승인"}, {"id": "B-16", "cat": "초당적 수용성·헌법", "item": "저자산·비수도권 청년의 공적 사회보험 의존성을 현실적으로 짚었는가", "action": "사적 자산 이전이 어려운 서민·지방 청년일수록 공적 연금·건강보험의 장기 지속가능성이 절실함을 명시", "status": "승인"}, {"id": "B-17", "cat": "초당적 수용성·헌법", "item": "해외 사례가 특정 이념 진영에 치우치지 않고 균형 있게 선정되었는가", "action": "북유럽(핀란드), 영미권(영국 웨일스·호주), 대륙법(독일 헌재), 동아시아(일본 지자체) 사례를 균형 수록", "status": "승인"}, {"id": "B-18", "cat": "초당적 수용성·헌법", "item": "각 해외 사례의 성과뿐 아니라 단독 도입 시 한계점을 함께 분석했는가", "action": "선언적 권고 그침(웨일스), 개별 의원입법 미연결(호주), 재정 수리 기능 약함(핀란드)을 짚고 한국형 결합 제시", "status": "승인"}, {"id": "B-19", "cat": "초당적 수용성·헌법", "item": "역사적 사례가 동서양 공화·협치 전통을 객관적으로 반영하는가", "action": "고대 로마 공화정의 호민관 재검토 전통과 조선 세종 경연의 사관(史官) 기록 제도를 ‘시간의 거울’로 대조", "status": "승인"}, {"id": "B-20", "cat": "초당적 수용성·헌법", "item": "예상되는 핵심 반론 3가지에 대한 논리적 방어를 본문에 포함했는가", "action": "① 입법 지연 우려, ② 복지·기후 투자 위축 우려, ③ 연구원 중립성 훼손 우려에 대한 구조적 해법 명시", "status": "승인"}, {"id": "B-21", "cat": "초당적 수용성·헌법", "item": "헌법 제10조 기본권 보호 의무를 미래 시간 축으로 자연스럽게 연결했는가", "action": "독일 연방헌법재판소 결정(2021) 법리를 참고하여 현세대 입법의 미래 자유 침해 예방 논리 정립", "status": "승인"}, {"id": "B-22", "cat": "초당적 수용성·헌법", "item": "2031년 중위연령 50세 도달 전 입법 추진의 적기성을 논증했는가", "action": "청년·3040·합리적 5060 유권자가 공존하는 제22~23대 국회가 합의 형성의 골든타임임을 통계로 제시", "status": "승인"}, {"id": "B-23", "cat": "초당적 수용성·헌법", "item": "특정 기업·단체·직역의 사익과 무관한 순수 공공 입법 의제인가", "action": "사익 연계 요소 0건 검증 완료(모집요강 제6항 선정 제외 사유 해당 없음)", "status": "승인"}, {"id": "B-24", "cat": "초당적 수용성·헌법", "item": "정부 행정부처가 아닌 ‘국회’ 고유 권한에 정확히 초점을 맞추었는가", "action": "행정부 예산 편성이 아닌 국회 상임위 법안 심사·공청회·본회의 상정 절차를 직접 혁신 대상으로 설계", "status": "승인"}, {"id": "B-25", "cat": "초당적 수용성·헌법", "item": "온실가스 감축 이행 입법의 미래 비용 전가 문제를 포괄했는가", "action": "중점법안 대상에 장기 온실가스 감축 경로 입법을 명시하여 재정·사회보험·기후 3대 축을 포괄", "status": "승인"}, {"id": "B-26", "cat": "초당적 수용성·헌법", "item": "상설 시민숙의단 추출 시 대표성 확보 기준을 제시했는가", "action": "지역·성별·연령·직업 비례 층화 무작위 추첨 기준 명시", "status": "승인"}, {"id": "B-27", "cat": "초당적 수용성·헌법", "item": "시민배심 운영 시 전문성 부족 문제를 보완하는 절차가 있는가", "action": "1일 차에 국회예산정책처 추계 담당관이 출석하여 30년 세대 손익표를 평이한 언어로 설명하는 절차 배치", "status": "승인"}, {"id": "B-28", "cat": "초당적 수용성·헌법", "item": "입법 전후 변화를 심사 단계별로 한눈에 비교할 수 있는가", "action": "발의 → 위원회 토론회 → 실무 통합 심사 → 본회의 투표 전 4단계 도입 전·후 비교표 수록", "status": "승인"}, {"id": "B-29", "cat": "초당적 수용성·헌법", "item": "국회·기성세대·미래세대 3주체의 실천 과제를 균형 있게 정리했는가", "action": "제5장 다절에서 여야 정당, 50~80대 선배 시민, 10~40대 세대의 역할을 대칭적으로 제시", "status": "승인"}, {"id": "B-30", "cat": "초당적 수용성·헌법", "item": "공모전 주제(‘구조 변동기 대한민국의 미래의제’)의 취지에 부합하는가", "action": "개별 현안 처방을 넘어 모든 미래 입법의 시간 시계를 교정하는 메타 거버넌스 의제로 정립", "status": "승인"}, {"id": "C-01", "cat": "가독성·문헌·조판", "item": "제안 의제 원제가 모든 제출 문서에서 100% 동일하게 유지되었는가", "action": "‘인구 비대칭 시대의 입법 시간주권: 국회 30년 코호트 세대회계 의무화와 가상 미래세대 숙의배심’ 전 문서 일치", "status": "승인"}, {"id": "C-02", "cat": "가독성·문헌·조판", "item": "‘인구 비대칭’ 개념을 비전공 시민이 즉시 이해하도록 비유했는가", "action": "유권자 수 차이로 미래 몫이 줄어드는 현상을 ‘먼저 식사한 손님이 계산서를 다음 식탁에 남기는 모습’으로 설명", "status": "승인"}, {"id": "C-03", "cat": "가독성·문헌·조판", "item": "‘코호트(Cohort)’ 용어 첫 등장 시 쉬운 우리말 풀이를 병기했는가", "action": "‘같은 시기에 태어난 출생연도별 세대 묶음(2010년대생~1950년대생)’으로 즉시 정의", "status": "승인"}, {"id": "C-04", "cat": "가독성·문헌·조판", "item": "‘중위연령’과 ‘노년부양비’를 일상 언어로 풀어 설명했는가", "action": "‘전 국민을 나이순으로 세웠을 때 한가운데 나이’, ‘일하는 청장년 100명이 부양할 노인 수’로 서술", "status": "승인"}, {"id": "C-05", "cat": "가독성·문헌·조판", "item": "‘비용추계서’를 일반 독자 눈높이의 용어로 병기했는가", "action": "‘법안 가계부(비용추계서)’, ‘5년짜리 짧은 재정 안경’으로 평이화", "status": "승인"}, {"id": "C-06", "cat": "가독성·문헌·조판", "item": "‘상임위 소위 위원회 대안’을 쉬운 말로 풀었는가", "action": "‘국회 분야별 심사 모임 안의 작은 실무 모임이 여러 의원 법안을 합쳐 만드는 통합 대안’으로 풀이", "status": "승인"}, {"id": "C-07", "cat": "가독성·문헌·조판", "item": "‘순부담·순편익’ 용어를 혼동 없이 이해할 수 있도록 다듬었는가", "action": "‘추가 부담’과 ‘미래 소득이 늘고 비용이 줄어드는 순이익’으로 본문·표 전체 통일", "status": "승인"}, {"id": "C-08", "cat": "가독성·문헌·조판", "item": "영문 외래어 ‘Comply or Explain’을 우리말 표현으로 치환했는가", "action": "‘고쳐 보완하거나 이유를 공개 설명하거나(보완 아니면 공개 설명)’로 전환", "status": "승인"}, {"id": "C-09", "cat": "가독성·문헌·조판", "item": "본문 서술 문장의 호흡이 8~12단어(어절) 기준을 준수했는가", "action": "전체 165개 서술 문장 전수 계측 결과 165문장(100.0%) 8~12단어 범위 충족(평균 10.45단어)", "status": "승인"}, {"id": "C-10", "cat": "가독성·문헌·조판", "item": "입증된 학술 이론을 본문 장황 설명 없이 별도 출처로 분리했는가", "action": "본문 내 학자·이론 나열을 제거하고 단락 하단 ‘※ 이론 출처:’ 5개 행 및 참고문헌 목록으로 간결히 분리", "status": "승인"}, {"id": "C-11", "cat": "가독성·문헌·조판", "item": "매슬로우 욕구 위계 및 자기초월 동기 이론 원전을 정확히 표기했는가", "action": "Maslow(1943, Psychological Review; 1969, Journal of Transpersonal Psychology) 원전 서지 확인", "status": "승인"}, {"id": "C-12", "cat": "가독성·문헌·조판", "item": "코호트 세대회계 원천 경제학 모형 출처를 정확히 표기했는가", "action": "Auerbach, Gokhale & Kotlikoff(1994, Journal of Economic Perspectives) 원전 서지 확인", "status": "승인"}, {"id": "C-13", "cat": "가독성·문헌·조판", "item": "가상 미래세대 숙의(‘퓨처 디자인’) 학술 출처를 정확히 표기했는가", "action": "Saijo(2020, Future Design, Springer) 편저 서지 확인", "status": "승인"}, {"id": "C-14", "cat": "가독성·문헌·조판", "item": "세대 간 정의·책임 윤리 및 장기 사고 철학 출처를 정확히 표기했는가", "action": "한스 요나스(1979/2005), 존 롤스(1971/2003), 로만 크르즈나릭(2021) 국내 번역본 및 원저 연도 병기", "status": "승인"}, {"id": "C-15", "cat": "가독성·문헌·조판", "item": "국회예산정책처 장기재정전망 보고서의 최신 발간 연도·수치가 정확한가", "action": "2025년 2월 발간 『2025~2072년 NABO 장기재정전망』 원문 수치(1,270.4조→7,303.6조, 47.8%→173.0%, 0.3%) 대조 완료", "status": "승인"}, {"id": "C-16", "cat": "가독성·문헌·조판", "item": "국회도서관 최신 해외 입법례 발간물 서지가 실재와 일치하는가", "action": "2026년 11월 16일 발간 『최신외국정책정보 제2026-14호(통권 제38호): 미래세대 중심의 정책설계』 원문 확인", "status": "승인"}, {"id": "C-17", "cat": "가독성·문헌·조판", "item": "국회미래연구원 자체 발간 연구보고서 인용이 정확한가", "action": "『성장사회를 넘어 성숙사회로(2022)』 및 『한국인의 행복조사 심층분석 보고서(2024)』 서지 확인", "status": "승인"}, {"id": "C-18", "cat": "가독성·문헌·조판", "item": "과장된 기계적 상투어·외래어 남용이 없는가", "action": "불필요한 외래 상투어(‘패러다임 시프트’, ‘유기적 시너지’, ‘에코시스템’, ‘넛지’ 등) 0건 확인", "status": "승인"}, {"id": "C-19", "cat": "가독성·문헌·조판", "item": "지정 목차 5개 대항목 순서를 원형 그대로 준수했는가", "action": "1. 제안하는 미래의제 → 2. 현황 및 문제점 → 3. 미래의제 제안 → 4. 국내외 유사 사례 → 5. 기대효과 일치", "status": "승인"}, {"id": "C-20", "cat": "가독성·문헌·조판", "item": "분량 및 조판 규격(A4 10매 내외, 11pt, 줄간격 160%, PDF)을 지켰는가", "action": "온라인 제출용 제안서 정확히 A4 10매 완결, 본문 11pt 바탕체 및 줄간격 정밀 조판 확인", "status": "승인"}, {"id": "C-21", "cat": "가독성·문헌·조판", "item": "10일 홈페이지 공개검증 대비 제출용 PDF 내 개인정보 비노출을 지켰는가", "action": "온라인 제출용 10매 PDF 및 공개 기술서 내 성명·연락처·주소·생년월일 등 개인 식별정보 0건 확인", "status": "승인"}, {"id": "C-22", "cat": "가독성·문헌·조판", "item": "한컴오피스(.hwpx) 원본 문서의 XML 구조 무결성을 검증했는가", "action": "OWPML 표준 mimetype(비압축 0번 엔트리), header.xml, section0.xml, content.hpf 파싱 검증 통과", "status": "승인"}, {"id": "C-23", "cat": "가독성·문헌·조판", "item": "PDF 변환 후 페이지 경계 표 잘림이나 1~2줄 고아 문단이 없는가", "action": "전 페이지 이미지 렌더링 육안 검수로 표 행 분리 정렬 및 마지막 10쪽 참고문헌 안정 배치 확인", "status": "승인"}, {"id": "C-24", "cat": "가독성·문헌·조판", "item": "번호 목록(1, 2, 3) 렌더링 초기화 오류가 없는가", "action": "제3장 다절·제5장 나절 번호 목록 1·2·3 순차 출력 정상 확인", "status": "승인"}, {"id": "C-25", "cat": "가독성·문헌·조판", "item": "본문·비교표·별첨 요약서 간 모든 통계 수치가 100% 일치하는가", "action": "46세·50세(2031년)·1,270조·7,303조·173.0%·0.3%·1,000억/3조·300인/36인·12억·30일/7일 전 문서 일치", "status": "승인"}, {"id": "C-26", "cat": "가독성·문헌·조판", "item": "AI 활용 기술서에 불필요한 변명조 표현을 배제하고 공정만 기록했는가", "action": "방어적 수사 없이 실제 활용 영역 4개 구간과 5단계 게이트 기각·보완·승인 이력을 객관적 지표로 기술", "status": "승인"}, {"id": "C-27", "cat": "가독성·문헌·조판", "item": "온라인 공개 검증 기술서가 무로그인·방화벽 환경에서도 즉시 열리는가", "action": "외부 스크립트·유료 폰트 의존성 없는 순수 정적 HTML5/SVG 및 인쇄용 2매 PDF 동시 제공", "status": "승인"}, {"id": "C-28", "cat": "가독성·문헌·조판", "item": "모바일·태블릿·데스크톱 해상도에서 표와 도식이 깨지지 않는가", "action": "반응형 그리드 및 가로 스크롤 보호 컨테이너 적용 확인", "status": "승인"}, {"id": "C-29", "cat": "가독성·문헌·조판", "item": "공개 저장소 배포 파일에 불필요한 임시 초안이나 로컬 경로가 없는가", "action": "전용 클린 폴더에서 index.html 및 audit-spec.pdf 단일 정적 자산만 분리 배포", "status": "승인"}, {"id": "C-30", "cat": "가독성·문헌·조판", "item": "제안서 본문 말미 출처란과 웹 검증 기술서 URL이 정확히 연결되었는가", "action": "붙임 제안서 [참고문헌 및 입증 이론 출처] 하단에 공개 검증 원장 URL 및 PDF 직링크 수록 완료", "status": "승인"}];
-let currentCat = 'ALL';
+const CANDS = [{"code": "선별 원형 (제3안 순정)", "title": "인구 비대칭 시대의 ‘입법 시간주권’: 30년 코호트 세대회계와 가상 미래세대 숙의배심", "score": "66.4점", "decision": "조건부 승인 (유일 60점+)", "cls": "cond", "reason": "입법부 고유 의안심사 절차 개혁 정합성 확보. 단, 내부 점검 결과 국회법 우회구멍(S02: 54%)·건별 모집 병목(S06: 60%)·서지 연도 오기 등 22개 세부 미승인 항목이 확인되어 기준 재확립 착수"}, {"code": "보류 안건 (제2안 순정)", "title": "인공지능 시대 ‘신입 사다리 증발’의 역설과 국가 초기숙련 공익신탁", "score": "54.5점", "decision": "미승인 (보류·제외)", "cls": "rej", "reason": "현행 「산업현장 일학습병행법」 제19조 수당 기시행 사실 누락, 24개월 현업 투입 시 「기간제법」 제4조 무기계약 간주 충돌, 연 8.3조 원 생애계좌 재원 산식 미비"}, {"code": "기각 안건 (단독 제4안)", "title": "초연결 고립 시대 ‘생애 전환기 회복탄력성 주권’과 상호돌봄 타임뱅크", "score": "45.0점", "decision": "미승인 (기각)", "cls": "rej", "reason": "프랑스 CPA·서울시간은행·2024 보건복지부 청년미래센터 등 기발표 정책의 수평 재조합에 그쳐 독자 제도 변형도(41.7%) 기준 미달"}, {"code": "기각 안건 (제1안 순정)", "title": "초고령 ‘공간·자산 동결’ 해소를 위한 한국형 알리멘타 세대순환 신탁", "score": "44.5점", "decision": "미승인 (기각 · 상한캡)", "cls": "rej", "reason": "시세 45% 반값 임대료에서 수선상각·종잣돈·가산연금을 동시 지출해 호당 월 -41.5만 원 원가 역전 발생, 단독주택 세대분리 부설주차장법 불가, 2024.5 주금공 개정 누락"}, {"code": "기각 안건 (병합 3안)", "title": "입법 시간주권 × 30년 코호트 ‘재정·행복 복식 세대회계’ 교차 병합안", "score": "44.5점", "decision": "미승인 (기각 · 상한캡)", "cls": "rej", "reason": "사후 주관 설문인 행복조사로 개별 법안 1건의 30년 뒤 코호트별 고립도 변화를 30일 내 인과 추계하라는 계량 방법론 불능(S05: 34%) 및 소규모 연구원 인력 과부하"}, {"code": "기각 안건 (병합 2안)", "title": "AI 신입 사다리 증발 × 초기숙련 신탁 × 고립청년 사회적 처방 병합안", "score": "44.3점", "decision": "미승인 (기각 · 상한캡)", "cls": "rej", "reason": "2024.8 출범 보건복지부 청년미래센터와 중복되어 변형도 33.3%로 하락, 산업 숙련 도제와 고립청년 복지 처방을 무리하게 결합한 다단 구조"}, {"code": "기각 안건 (병합 1안)", "title": "한국형 알리멘타 공간신탁 × 세대교차 돌봄 타임뱅크·비혈연협약 병합안", "score": "39.3점", "decision": "미승인 (기각 · 상한캡)", "cls": "rej", "reason": "7단 제도 과적으로 호당 월 적자가 -56.5만 원으로 확대되고 현행 의료·가족 법체계와의 충돌 요소로 인해 실행성 상실"}, {"code": "기각 대조군 B", "title": "대학 생성형 AI 활용 교육 의무화 및 청년 단기 인턴십 바우처 확대", "score": "36.0점", "decision": "미승인 (즉시 배제)", "cls": "rej", "reason": "모집요강 제1항이 명시적으로 지양한 ‘이미 논의 중인 단편적 AI 교육·인재양성 의제’에 해당"}, {"code": "기각 대조군 A", "title": "청년 월세 한시지원 확대 및 주택연금 가입연령 완화", "score": "34.0점", "decision": "미승인 (즉시 배제)", "cls": "rej", "reason": "모집요강 제6항 선정 제외대상 제1호(‘이미 발표되었거나 추진 중인 정책의제’) 해당"}, {"code": "기각 대조군 C", "title": "선언적 미래세대 기본법 제정 및 연령별 가중 차등투표제(데미니 투표)", "score": "31.0점", "decision": "미승인 (즉시 배제)", "cls": "rej", "reason": "대한민국 헌법 제41조 제1항 평등선거(1인 1표) 원칙 위배로 개헌 없이는 입법 불가 및 기존 임기만료 폐기 법안 답습"}];
+const STAGES = [{"stage": "S01. 주최기관 연구 정체성·출제 부합도", "rate": 82, "note": "입법부 고유 의안심사 절차 개혁 방향 적합 (행정부 세부 보조금 나열 배제)"}, {"stage": "S02. 헌법·국회법 절차 정합성", "rate": 54, "note": "미첨부 사유서·위원회 대안 생략 구멍 방치 및 법사위(제86조) 연계 충돌로 미승인 다수 발생"}, {"stage": "S03. 기발표 정책·선행제도 차별성", "rate": 66, "note": "21대 국회 연금공론화 실증 연계 보강 및 최신 국회도서관 해외입법 비교 반영 필요"}, {"stage": "S04. 선행 모형 대비 제도 변형도", "rate": 62, "note": "행정부 거시 보고서(호주) 대비 ‘개별 중점법안 발의·통합 대안 심사 직결’ 기준 구체화 필요"}, {"stage": "S05. 수리 모형·인용 서지 실재성", "rate": 65, "note": "행복·고립도 복식 추계 불승인 및 ‘2024~2072 NABO 전망’ 발간연도 오기 적발"}, {"stage": "S06. 국회 현장 작동성·모집 병목", "rate": 60, "note": "법안별 36~45인 신규 추첨 시 회당 4~6주 지연 병목 미승인 → 상설 300인 풀 전환 필요"}, {"stage": "S07. 기관 인력·예산 수지 타당성", "rate": 64, "note": "국회미래연구원 개별 법안 상시 추계 부과 미승인 → 예산정책처 전담 분리 필요"}, {"stage": "S08. 단일 논리 응집성(복합 과적 배제)", "rate": 84, "note": "단일 국회법 절차 개혁 골격 승인 (복식 행복계정 부착 시도만 기각)"}, {"stage": "S09. 세출·세입 균형 및 시민 가독성", "rate": 67, "note": "세입 감면 동시 검증·미래투자 순익·30일 자동종료 누락 및 장문 전문용어 미승인"}];
+const ITEMS = [{"id": "U-01", "decision": "미승인", "stage": "S02 법제절차", "item": "[초안 설계] 현행 비용추계 ‘기술적 곤란 미첨부 사유서’ 조항 유지", "analysis": "사유서 한 장으로 추계를 생략하는 관행이 유지되면 시행 즉시 제도가 무력화됨 → 중점법안은 단순 사유서 대신 최소·중간·최대 3단계 범위 추정표 첨부로 대체"}, {"id": "U-02", "decision": "미승인", "stage": "S02 법제절차", "item": "[초안 설계] 발의 원안에만 30년 추계를 적용하고 소위 ‘위원회 대안’ 단서 유지", "analysis": "연금·세법 등 주요 법안은 소위 통합 수정안(위원회 대안)으로 처리되어 재추계 생략 단서로 누락됨 → 통합 대안 의결 전 ‘7일 신속 재계산표’ 의무화로 교정"}, {"id": "U-03", "decision": "미승인", "stage": "S02 법제절차", "item": "[초안 설계] 상쇄 설명서 미제출 법안을 ‘법제사법위원회 상정 보류’와 연계", "analysis": "체계·자구 심사에 한정된 「국회법」 제86조 권한 범위와 충돌 → 법사위 연계를 폐기하고 소관 상임위 의결 및 국회의장 본회의 상정 확인 요건으로 한정"}, {"id": "U-04", "decision": "미승인", "stage": "S05 수리·서지", "item": "[병합 시도] 법안별 30년 뒤 코호트 ‘고립도·시간빈곤’ 복식 정량 추계 의무화", "analysis": "사후 설문조사로 개별 법안 1건의 30년 뒤 주관 지표를 30일 내 인과 산출하는 계량 모형은 성립 불능 → 복식 계정을 기각하고 검증된 재정·사회보험·기후 손익으로 단일화"}, {"id": "U-05", "decision": "미승인", "stage": "S05 수리·서지", "item": "[초안 서지] 참고문헌 내 ‘2024~2072년 NABO 장기재정전망(2024)’ 표기", "analysis": "실제 국회예산정책처 발간본은 2025년 2월 『2025~2072년 NABO 장기재정전망』임 → 원문 수치(1,270.4조→7,303.6조 원, 173.0%, 성장률 0.3%)와 정식 서지로 교체"}, {"id": "U-06", "decision": "미승인", "stage": "S05 수리·서지", "item": "[초안 서지] 해외 미래세대 입법 비교 시 최신 국회 공식 발간물 누락", "analysis": "2026년 11월 16일 발간 국회도서관 『최신외국정책정보 제38호(미래세대 중심의 정책설계)』 원문을 반영하여 비교입법 근거 보완"}, {"id": "U-07", "decision": "미승인", "stage": "S07 기관수지", "item": "[초안 설계] 국회미래연구원에 개별 중점법안 30일 상시 추계 업무 공동 부과", "analysis": "소수 정예 연구기관에 정기국회 수십 건 법안 계산을 지우면 본연의 장기 연구 기능이 저하됨 → 개별 법안 계산은 예산정책처 전담, 미래연구원은 2년 회기 초 기준선 연구로 분리"}, {"id": "U-08", "decision": "미승인", "stage": "S07 기관수지", "item": "[초안 설계] 국회미래연구원이 개별 법안의 적합·부적합을 직접 판정", "analysis": "「국회미래연구원법」 제5조의 독립성·객관성 보호 원칙과 상충 → 개별 법안 찬반 판정 기능을 배제하고 회기 초 거시 위험 기준선만 제시하도록 설계"}, {"id": "U-09", "decision": "미승인", "stage": "S06 현장작동", "item": "[초안 설계] 중점법안 발생 시마다 시민배심 36~45인을 건별 신규 무작위 추첨", "analysis": "건별 층화추출에 회당 4~6주 및 약 1억 원이 소요되어 정기국회 심사 병목 초래 → 2년 임기 ‘상설 시민숙의단 300인’ 사전 구성 후 건별 36인 즉시 배정(연 12억)으로 전환"}, {"id": "U-10", "decision": "미승인", "stage": "S09 재정균형", "item": "[초안 설계] 재정 지출 확대 법안 중심으로만 30년 세대 부담 검증 대상 기술", "analysis": "세출 측면만 살피면 세입 감소에 따른 장기 재정 영향이 누락됨 → 재원 대책 없는 대규모 세금 감면 법안도 동일 임계치(연 1,000억/30년 3조)로 검증하도록 보완"}, {"id": "U-11", "decision": "미승인", "stage": "S09 재정균형", "item": "[초안 설계] 세대회계 산출 시 조세·보험료 부담액(+) 위주 단일 표기", "analysis": "아동·청년·교육·기후전환 투자가 초기 5년 투입비 때문에 저평가되는 왜곡 잔존 → 장기 성장 확충 및 사회적 비용 절감에 따른 ‘30년 순이익(-)’ 항목을 동시 산출하도록 교정"}, {"id": "U-12", "decision": "미승인", "stage": "S06 현장작동", "item": "[초안 설계] 추계 및 시민배심 절차의 최대 소요 기한(자동 종료일) 미설정", "analysis": "사전 절차 장기화로 정기국회 의안 심사가 정체될 위험 → 법안 접수 후 30일(통합 대안 7일) 경과 시 사전 검증을 자동 종료하는 일몰 조항 신설"}, {"id": "U-13", "decision": "미승인", "stage": "S09 문체정돈", "item": "[초안 문체] 본문 내 감정적·평가적 수식어 사용", "analysis": "입법 연구 제안서의 객관성을 떨어뜨리는 주관적 수식어를 삭제하고 가치중립적 제도·절차 용어로 전면 통일"}, {"id": "U-14", "decision": "미승인", "stage": "S02 법제절차", "item": "[대안 검토] 원외 독립 ‘미래세대위원회’에 입법 보류·재의요구 권한 부여안", "analysis": "비선출 기구가 선출된 국회의 입법권을 제약하여 헌법 제40조·제41조 위반 소지 → 원외 거부권을 배제하고 국회 내부 ‘보완 아니면 공개 설명’ 자율 규율로 확정"}, {"id": "U-15", "decision": "미승인", "stage": "S02 법제절차", "item": "[대안 검토] 국가채무 비율 상한을 일률 동결하는 경직적 재정준칙 결합안", "analysis": "위기 대응 및 필수 미래 투자(기후·아동·연구개발)까지 일괄 제한하는 한계 → 총량 동결 규제를 기각하고 세대별 장기 손익 투명 공시 방식으로 설계"}, {"id": "U-16", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 문체] ‘코호트’, ‘중위연령’, ‘순편익’, ‘Comply or Explain’ 무풀이 전문용어 사용", "analysis": "비정책 일반 시민 독자의 이해 장벽 유발 → 출생연도별 세대 묶음, 나이순 한가운데 나이, 미래 순이익, ‘고쳐 보완하거나 이유를 공개 설명하거나’로 평이화"}, {"id": "U-17", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 문체] 매슬로우·요나스·롤스 등 학술 이론을 본문 서술에 반복 설명", "analysis": "본문 호흡이 무거워지고 핵심 제도 전달력이 분산됨 → 본문은 쉬운 생활 심리로만 서술하고 학술 이론은 단락 하단 ‘※ 이론 출처:’ 별도 행으로 분리"}, {"id": "U-18", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 문체] 18~28어절 장문과 복문이 혼재된 서술 구조", "analysis": "긴 문장으로 인해 비전공 독자 가독성 저하 → 본문 165개 전 서술 문장을 8~12단어(평균 10.45단어) 호흡으로 전면 재정돈"}, {"id": "U-19", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 문체] ‘패러다임 시프트’, ‘에코시스템’, ‘넛지’ 등 외래 상투어 혼용", "analysis": "번역투 인상을 줄 수 있는 외래 상투어를 전수 검출하여 고유 우리말 표현으로 치환"}, {"id": "U-20", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 조판] 마크다운 번호 목록 사이 빈 줄 삽입으로 PDF 변환 시 ‘1·1·1’ 번호 초기화", "analysis": "제3장 다절·제5장 나절 번호 목록 구조를 수정하여 1·2·3 순차 번호 정상 출력 확인"}, {"id": "U-21", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 조판] 마지막 10쪽 상단에 참고문헌 1줄만 걸치는 고아 줄(Orphan) 발생", "analysis": "문단 간격(6.5pt)·줄간격(1.70) 및 14종 정식 서지 배치를 조정하여 10쪽 지면 균형 확보"}, {"id": "U-22", "decision": "미승인", "stage": "S09 시민가독", "item": "[초안 기술서] 검증 기술서 내 승인 항목만 단편 나열하고 기각·기준화 과정 미표시", "analysis": "초기 9개 기각 후보와 66.4점 초안의 미승인 22항목을 함께 공개하고, 승인 58항목의 단계별 기준 확립 및 최종 결론 도출 흐름으로 전면 개편"}, {"id": "S1-01", "decision": "승인", "stage": "기준1 합헌·법제", "item": "헌법 개정 없이 현행 「국회법」 개정만으로 즉시 작동하는 제도 구조", "analysis": "제58조(공청회)·제79조의2(비용추계) 개정 및 제79조의3(상정 확인·공개 설명) 신설 3단 구조 확정"}, {"id": "S1-02", "decision": "승인", "stage": "기준1 합헌·법제", "item": "헌법 제41조 제1항 보통·평등선거(1인 1표) 원칙 완전 준수", "analysis": "투표권 차등 없이 입법 심사 과정의 미래 정보 공시와 시민 공청회 절차만 고도화"}, {"id": "S1-03", "decision": "승인", "stage": "기준1 합헌·법제", "item": "헌법 제40조 국회의원 최종 본회의 입법 표결권 100% 보장", "analysis": "원외 거부권 없이 소관 위원회와 본회의의 자율적 수정 또는 공개 설명 후 표결 보장"}, {"id": "S1-04", "decision": "승인", "stage": "기준1 합헌·법제", "item": "헌법 제10조 기본권 보호 의무의 시간적 확장 법리 연결", "analysis": "2021년 독일 연방헌법재판소 기후보호법 결정의 ‘세대 간 자유 배분’ 예방 법리 접목"}, {"id": "S1-05", "decision": "승인", "stage": "기준1 합헌·법제", "item": "소관 상임위원회 중심 심사 원칙 준수 (법사위 체계·자구 경계 수호)", "analysis": "타 위원회 법안의 법사위 병목을 유발하지 않도록 소관위·본회의 부의 요건으로 설계"}, {"id": "S1-06", "decision": "승인", "stage": "기준1 합헌·법제", "item": "행정부 예산 편성이 아닌 ‘국회 고유 의안 심사권’ 정밀 조준", "analysis": "국회미래연구원 공모 취지에 부합하는 입법부 제도 혁신 의제로 완결성 확보"}, {"id": "S1-07", "decision": "승인", "stage": "기준1 합헌·법제", "item": "과거 임기만료 폐기된 선언적 미래세대 기본법안 대비 실행력 차별화", "analysis": "추상적 다짐 대신 개별 중점법안 심사 단계마다 자동 발동되는 절차 조문으로 설계"}, {"id": "S1-08", "decision": "승인", "stage": "기준1 합헌·법제", "item": "재난 복구 및 긴급 경제위기 대응 법안의 즉시 처리 예외 보장", "analysis": "국가 위기 시 신속 입법이 저해되지 않도록 명확한 면제 단서 설정"}, {"id": "S1-09", "decision": "승인", "stage": "기준1 합헌·법제", "item": "특정 기업·직역·단체의 사익과 무관한 보편적 공공 입법 규칙", "analysis": "모집요강 제6항 사익 관련 제외 사유 해당 없음 확인"}, {"id": "S1-10", "decision": "승인", "stage": "기준1 합헌·법제", "item": "단계별 입법 정착 로드맵(2027 모형→2028 시범→2030 시행)의 법제 현실성", "analysis": "국회 회기 주기와 맞물리는 3단계 점진적 검증·정착 일정 확립"}, {"id": "S2-01", "decision": "승인", "stage": "기준2 수리·분업", "item": "Auerbach-Kotlikoff 출생 코호트별 30년 세대회계 표준 수리 모형 채택", "analysis": "2010년대생~1950년대생 10년 단위 출생 묶음별 장기 부담·순이익 산출 구조 확립"}, {"id": "S2-02", "decision": "승인", "stage": "기준2 수리·분업", "item": "현행 5년 단기 비용추계서와 30년 세대 손익계산서의 병행 표시", "analysis": "단기 예산 소요(5년)와 장기 세대 파급(30년)을 한눈에 대조하도록 구성"}, {"id": "S2-03", "decision": "승인", "stage": "기준2 수리·분업", "item": "국회예산정책처의 개별 중점법안 30일 수리 추계 전담 체계", "analysis": "기존 추계 전문 인력과 거시재정 모형을 보유한 예산정책처에 계산 실무 일원화"}, {"id": "S2-04", "decision": "승인", "stage": "기준2 수리·분업", "item": "국회미래연구원의 ‘2년 회기 초 국가 장기위험 기준선 보고서’ 전담 체계", "analysis": "소수 정예 연구원의 역량을 거시 미래 지표·중점 검증 분야 나침반 제시에 집중"}, {"id": "S2-05", "decision": "승인", "stage": "기준2 수리·분업", "item": "「국회미래연구원법」 제5조 연구 독립성 및 객관성 완전 보호 구조", "analysis": "개별 법안 찬반 판정과 분리하여 공적 미래 연구 지식 플랫폼 위상 수호"}, {"id": "S2-06", "decision": "승인", "stage": "기준2 수리·분업", "item": "국민연금·건강보험·장기국채·온실가스 감축 법안의 필수 검증 대상 포함", "analysis": "미래세대 생애 부담을 좌우하는 핵심 구조개혁 입법군을 빠짐없이 포괄"}, {"id": "S2-07", "decision": "승인", "stage": "기준2 수리·분업", "item": "국회예산정책처 『2025~2072년 NABO 장기재정전망(2025.2)』 공식 수치 반영", "analysis": "국가채무 1,270.4조→7,303.6조 원(GDP 대비 47.8%→173.0%), 성장률 0.3% 정확 일치"}, {"id": "S2-08", "decision": "승인", "stage": "기준2 수리·분업", "item": "통계청 『장래인구추계(2022~2072)』 중위연령·노년부양비 공식 수치 반영", "analysis": "2025년 중위연령 46세 상회, 2031년 50세 돌파, 2050년 노년부양비 80명 상회 정확 일치"}, {"id": "S2-09", "decision": "승인", "stage": "기준2 수리·분업", "item": "국회미래연구원 차년도 정규 연구과제 3대 산출물 연계성", "analysis": "표준모형 공동 개발, 특위 시범 공청회 실증, 국회법 개정안 성안 지원 과제 도출"}, {"id": "S2-10", "decision": "승인", "stage": "기준2 수리·분업", "item": "호주·네덜란드 행정부 거시 세대회계 대비 ‘의원입법 개별 심사 직결’ 발전성", "analysis": "단순 참고 보고서를 넘어 실제 법안 발의·통합 대안 심사에 직결되는 한국형 발전 모델 확립"}, {"id": "S3-01", "decision": "승인", "stage": "기준3 무결·신속", "item": "일상 민생 법안 병목을 막는 중점법안 임계치(연 1,000억 / 30년 3조 원) 설정", "analysis": "전체 발의 법안 중 미래 재정 파급이 큰 핵심 법안에만 선택과 집중"}, {"id": "S3-02", "decision": "승인", "stage": "기준3 무결·신속", "item": "중점법안 비용추계 미첨부 사유서 제한 및 최소·중간·최대 3단계 범위 추계", "analysis": "불확실성을 이유로 계산 자체를 회피하던 기존 입법 관행의 사각지대 해소"}, {"id": "S3-03", "decision": "승인", "stage": "기준3 무결·신속", "item": "상임위 소위 통합 수정안(위원회 대안) 단계의 ‘7일 신속 재계산표’ 의무화", "analysis": "병합 심사 단계에서 재정 수치가 크게 바뀌어도 검증 없이 통과되던 공백 차단"}, {"id": "S3-04", "decision": "승인", "stage": "기준3 무결·신속", "item": "법안 접수 후 30일(통합 대안 7일) 경과 시 사전 검증 자동 종료(일몰) 규칙", "analysis": "추계나 숙의 일정 지연으로 인해 본연의 의안 심사가 정체되는 현상 원천 제거"}, {"id": "S3-05", "decision": "승인", "stage": "기준3 무결·신속", "item": "2년 임기 ‘상설 다세대 시민숙의단 300인’ 사전 추첨 풀(Pool) 구축", "analysis": "중점법안 상정 시 모집 지연 없이 즉시 36인을 무작위 배정하는 신속 가동 체계"}, {"id": "S3-06", "decision": "승인", "stage": "기준3 무결·신속", "item": "지역·성별·연령·직업 비례 층화추첨을 통한 시민배심 대표성 확보", "analysis": "이해관계 단체 위주 진술을 넘어 일반 시민 인구 구성을 반영한 숙의 공론장 구현"}, {"id": "S3-07", "decision": "승인", "stage": "기준3 무결·신속", "item": "연간 15회 운영 기준 약 12억 원 규모의 경량·고효율 국회 예산 구조", "analysis": "신규 조직 신설 없이 기존 공청회 예산 특례 수준으로 즉시 운영 가능"}, {"id": "S3-08", "decision": "승인", "stage": "기준3 무결·신속", "item": "제21대 국회 연금개혁 공론화 시민대표단(500인) 성공 경험의 제도적 계승", "analysis": "한국 국회에서 실증된 시민 숙의 역량을 일회성 특위에서 상임위 상설 제도로 정착"}, {"id": "S3-09", "decision": "승인", "stage": "기준3 무결·신속", "item": "1일 차 예산정책처 추계관 설명 → 2일 차 3세대 교차 숙의 표준 프로토콜", "analysis": "정확한 30년 숫자 근거 위에서 세대 간 타협안을 도출하는 2일 집중 숙의 절차"}, {"id": "S3-10", "decision": "승인", "stage": "기준3 무결·신속", "item": "시민배심 권고의견서의 소관 위원회 심사보고서 첫머리 의무 수록", "analysis": "숙의 결과가 단순 참고자료로 묻히지 않고 본회의 표결 전 공식 기록으로 남도록 보장"}, {"id": "S3-11", "decision": "승인", "stage": "기준3 무결·신속", "item": "발의→토론회→실무통합심사→본회의 상정 전 4단계 도입 전·후 비교표 제시", "analysis": "입법 실무자와 일반 시민 모두가 절차 변화를 직관적으로 파악하도록 구조화"}, {"id": "S3-12", "decision": "승인", "stage": "기준3 무결·신속", "item": "단계별 핵심 성과 지표(손익표 첨부율 100%, 수용성 상승률, 대안 반영률) 설정", "analysis": "시범 운영 후 정량적 효과 검증이 가능한 관리 지표 확립"}, {"id": "S4-01", "decision": "승인", "stage": "기준4 균형·책임", "item": "무대책 재정 지출 법안과 대규모 감세(세입 축소) 법안의 동일 기준 검증", "analysis": "세출 확대와 세입 감소를 균형 있게 살피는 양방향 장기 재정 거울 확립"}, {"id": "S4-02", "decision": "승인", "stage": "기준4 균형·책임", "item": "아동·청년·교육·기후전환 투자의 30년 장기 순이익(성장·비용절감) 공식 반영", "analysis": "단기 5년 가계부에서 적자로 오해받던 생산적 미래 투자 법안의 장기 가치 입증"}, {"id": "S4-03", "decision": "승인", "stage": "기준4 균형·책임", "item": "양방향 가상 적용 비교표([사례 A] 단기 감세·지출 vs [사례 B] 청년·기후 투자) 실증", "analysis": "부담 전가(+2,640만 원)와 미래 투자 순이익(-1,450만 원) 차이를 구체적 예시로 입증"}, {"id": "S4-04", "decision": "승인", "stage": "기준4 균형·책임", "item": "중장기 개혁 입법 추진 시 객관적 데이터와 시민 숙의를 통한 국민 설득력 확보", "analysis": "충분한 사전 영향 분석과 세대 간 숙의를 거쳐 입법 신뢰도 제고"}, {"id": "S4-05", "decision": "승인", "stage": "기준4 균형·책임", "item": "연금·건강보험·기후 등 장기 난제의 사회적 합의 형성 기반 마련", "analysis": "단기 이해관계를 넘어 장기 지속가능성 관점에서 대안을 도출하는 공론 장치 제공"}, {"id": "S4-06", "decision": "승인", "stage": "기준4 균형·책임", "item": "국회 회기 변화에도 일관된 기준으로 작동하는 상설 의안 심사 규범", "analysis": "장기 국가 과제의 연속성을 뒷받침하는 제도적 기반 확립"}, {"id": "S4-07", "decision": "승인", "stage": "기준4 균형·책임", "item": "‘고쳐 보완하거나 이유를 공개 설명하거나(보완 아니면 공개 설명)’ 자율 책임 규율", "analysis": "미래 과중부담 또는 배심 2/3 보완 권고 시 대안 반영 또는 대국민 설명서 공개 선택"}, {"id": "S4-08", "decision": "승인", "stage": "기준4 균형·책임", "item": "공개 설명서 필수 3대 기재 사항(기대효과·대체 재원·재점검 시점) 및 첫 화면 공시", "analysis": "입법 표결권을 보장하되 국민과 미래세대 앞의 공적 설명 책임 완성"}, {"id": "S4-09", "decision": "승인", "stage": "기준4 균형·책임", "item": "시민배심 3세대 동수 구성(청년 12 · 3040 중재 12 · 2055 후손 대리 어르신 12)", "analysis": "특정 연령층 편중 없이 미래 당사자·중재 세대·선배 시민이 동등하게 숙의하는 거버넌스"}, {"id": "S4-10", "decision": "승인", "stage": "기준4 균형·책임", "item": "50~70대 기성세대에 ‘2055년 대한민국 후손 대리 대표’ 공식 지위 부여(‘퓨처 디자인’)", "analysis": "기성세대를 세대 갈등 대상이 아닌 후손 보호의 주체(선배 시민)로 세우는 사회문화 전환"}, {"id": "S4-11", "decision": "승인", "stage": "기준4 균형·책임", "item": "저자산·비수도권 청년일수록 공적 연금·건강보험 지속가능성이 절실한 현실 반영", "analysis": "세대 내 자산 여건 차이까지 고려한 공적 사회보험 방어 필요성 논증"}, {"id": "S4-12", "decision": "승인", "stage": "기준4 균형·책임", "item": "2031년 국민 중위연령 50세 돌파 전 제22~23대 국회의 적기성 입증", "analysis": "세대 균형 합의가 가능한 인구 구조상 골든타임 제시"}, {"id": "S4-13", "decision": "승인", "stage": "기준4 균형·책임", "item": "동서양 역사 속 장기 번영 장치(로마 호민관 재검토권 · 조선 세종 경연 사관) 연결", "analysis": "당대의 결정을 미래·역사 시선에서 돌아보게 한 ‘시간의 거울’ 전통 계승"}, {"id": "S4-14", "decision": "승인", "stage": "기준4 균형·책임", "item": "제도 도입 시 예상되는 3대 핵심 쟁점(처리 기한·미래투자 반영·기관 독립성) 해법 명시", "analysis": "본문 제3장 라절에서 입법 지연·투자 위축·연구원 독립성 우려를 구조적으로 해소"}, {"id": "S5-01", "decision": "승인", "stage": "기준5 가독·실증", "item": "제안 의제 핵심 원제의 전 문서 100% 일관 보존", "analysis": "‘인구 비대칭 시대의 입법 시간주권: 국회 30년 코호트 세대회계 의무화와 가상 미래세대 숙의배심’ 유지"}, {"id": "S5-02", "decision": "승인", "stage": "기준5 가독·실증", "item": "비전공 시민 독자를 위한 입법·재정·통계 전문용어 일상어 풀이 완결", "analysis": "인구 비대칭(다음 손님 식탁 계산서), 코호트(출생연도 묶음), 비용추계서(법안 가계부) 등 직관화"}, {"id": "S5-03", "decision": "승인", "stage": "기준5 가독·실증", "item": "본문 전체 165개 서술 문장 100.0% ‘8~12단어(어절)’ 호흡 충족", "analysis": "이탈 문장 0건(평균 10.45단어)으로 비전공자도 막힘없이 읽히는 서술 리듬 구현"}, {"id": "S5-04", "decision": "승인", "stage": "기준5 가독·실증", "item": "5대 입증 학술 이론의 본문 서술 배제 및 ‘※ 이론 출처:’ 별도 표기 분리", "analysis": "Maslow, Auerbach·Kotlikoff, Saijo, 요나스·롤스, 크르즈나릭 원전 출처를 간결 분리"}, {"id": "S5-05", "decision": "승인", "stage": "기준5 가독·실증", "item": "14종 국내외 공식 보고서·판례·학술 원전의 발간 연도 및 정식 서명 100% 대조", "analysis": "2026.11 국회도서관 제38호, 2025.2 NABO 장기재정전망 등 실존 문헌 전수 확인"}, {"id": "S5-06", "decision": "승인", "stage": "기준5 가독·실증", "item": "공모 양식 5대 목차 및 조판 규격(A4 10매, 11pt 바탕, 줄간격 160%, PDF) 준수", "analysis": "온라인 제출용 제안서 정확히 A4 10매 완결 및 전 페이지 이미지 육안 검수 통과"}, {"id": "S5-07", "decision": "승인", "stage": "기준5 가독·실증", "item": "10일 홈페이지 대국민 공개검증 대비 제출용 본문 내 개인 식별정보 완전 비노출", "analysis": "성명·생년월일·연락처·주소 등 민감 개인정보 0바이트 검증 완료"}, {"id": "S5-08", "decision": "승인", "stage": "기준5 가독·실증", "item": "본문·비교표·별첨 요약서·공개 기술서 간 핵심 통계 수치 100% 일치", "analysis": "46세·50세·1,270조·7,303조·173.0%·0.3%·1,000억/3조·300인/36인·12억·30일/7일 통일"}, {"id": "S5-09", "decision": "승인", "stage": "기준5 가독·실증", "item": "한컴오피스(.hwpx) 원본 OWPML 아카이브 및 XML 스키마 무결성 확보", "analysis": "mimetype 비압축 0번 엔트리 및 header·section0·content.hpf 정식 검증 완료"}, {"id": "S5-10", "decision": "승인", "stage": "기준5 가독·실증", "item": "미승인 내역·승인 기준 확립·최종 결론 도출 전 공정의 온라인 공개 원장 수록", "analysis": "붙임 제안서 10쪽 출처란에 공개 검증 기술서 웹 URL 및 요약 PDF 직링크 연결 완료"}, {"id": "S5-11", "decision": "승인", "stage": "기준5 가독·실증", "item": "모바일·데스크톱·공공기관 행정망 방화벽 환경 무로그인 즉시 열람 호환성", "analysis": "외부 라이브러리 의존성 없는 순수 정적 HTML5/SVG 및 A4 3매 PDF 구성"}, {"id": "S5-12", "decision": "승인", "stage": "기준5 가독·실증", "item": "대안 간 기각 사유·기준 도출·최종 결론 간 인과 논리의 완결성 점검", "analysis": "초기 미달 요소 배제부터 최종 3대 관문 확정까지 단계별 논리 일관성 검증 완료"}];
+let currentFilter = 'ALL';
 
 function switchTab(idx) {
   document.querySelectorAll('nav.tabs button').forEach((b, i) => b.classList.toggle('active', i === idx));
   document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === idx));
 }
 
-function filterChk(cat, btn) {
-  currentCat = cat;
+document.getElementById('candBody').innerHTML = CANDS.map(c => `
+  <tr class="${c.cls === 'rej' ? 'row-rej' : 'row-cond'}">
+    <td><strong>${c.code}</strong></td>
+    <td>${c.title}</td>
+    <td><strong>${c.score}</strong></td>
+    <td><span class="tag ${c.cls === 'rej' ? 'rej' : 'cond'}">${c.decision}</span></td>
+    <td>${c.reason}</td>
+  </tr>
+`).join('');
+
+document.getElementById('stageBody').innerHTML = STAGES.map(s => {
+  const color = s.rate < 62 ? '#b91c1c' : (s.rate < 70 ? '#b45309' : '#047857');
+  return `
+    <tr>
+      <td><strong>${s.stage}</strong></td>
+      <td>
+        <div style="display:flex; justify-content:space-between; font-weight:800; color:${color};">
+          <span>승인율 ${s.rate}%</span><span>미승인 ${100 - s.rate}%</span>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${s.rate}%; background:${color};"></div></div>
+      </td>
+      <td>${s.note}</td>
+    </tr>
+  `;
+}).join('');
+
+function filterChk(flt, btn) {
+  currentFilter = flt;
   document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderChk();
@@ -329,19 +391,20 @@ function filterChk(cat, btn) {
 
 function renderChk() {
   const q = (document.getElementById('chkSearch').value || '').trim().toLowerCase();
-  const tbody = document.getElementById('chkBody');
   const rows = ITEMS.filter(it => {
-    if (currentCat !== 'ALL' && it.cat !== currentCat) return false;
+    if (currentFilter === '미승인' && it.decision !== '미승인') return false;
+    if (currentFilter === '승인' && it.decision !== '승인') return false;
+    if (currentFilter.startsWith('기준') && !it.stage.startsWith(currentFilter)) return false;
     if (!q) return true;
-    return it.id.toLowerCase().includes(q) || it.item.toLowerCase().includes(q) || it.action.toLowerCase().includes(q);
+    return it.id.toLowerCase().includes(q) || it.stage.toLowerCase().includes(q) || it.item.toLowerCase().includes(q) || it.analysis.toLowerCase().includes(q);
   });
-  tbody.innerHTML = rows.map(it => `
-    <tr>
+  document.getElementById('chkBody').innerHTML = rows.map(it => `
+    <tr class="${it.decision === '미승인' ? 'row-rej' : ''}">
       <td><strong>${it.id}</strong></td>
-      <td><span class="tag cat">${it.cat}</span></td>
+      <td><span class="tag ${it.decision === '미승인' ? 'rej' : 'ok'}">${it.decision}</span></td>
+      <td><span class="tag cat">${it.stage}</span></td>
       <td>${it.item}</td>
-      <td>${it.action}</td>
-      <td><span class="tag ok">${it.status}</span></td>
+      <td>${it.analysis}</td>
     </tr>
   `).join('');
 }
